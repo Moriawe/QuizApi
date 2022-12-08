@@ -41,33 +41,31 @@ namespace Quiz_API.Persistance
         }
 
         // cr_U_d
-        public List<Question>? UpdatePlayer(Question question)
+        public List<Question>? UpdateQuestion(Question question)
         {
             var questionToUpdate = this.Questions.Where(x => x.Id == question.Id).FirstOrDefault();
             Console.WriteLine($"QuizContext UpdatePlayer questionToUpdate: {questionToUpdate}");
 
-            if (playerToUpdate != null)
+            if (questionToUpdate != null)
             {
                 // Need to do this:
-                playerToUpdate.Id = player.Id;
-                playerToUpdate.Name = player.Name;
-                playerToUpdate.Age = player.Age;
-                playerToUpdate.Health = player.Health;
-                playerToUpdate.Strength = player.Strength;
+                questionToUpdate.Id = question.Id;
+                questionToUpdate.Language = question.Language;
+                questionToUpdate.Text = question.Text;
+                questionToUpdate.Category = question.Category; ;
 
-                Console.WriteLine("GameDatabaseContext updatedPlayer");
-                var updatedPlayer = this.Players.Update(playerToUpdate);
+                Console.WriteLine("QuizContext updatedQuestion");
+                var updatedQuestion = this.Questions.Update(questionToUpdate);
 
                 var updateCount =
                 this.Save();
-                Console.WriteLine($"GameDatabaseContext UpdatePlayer updateCount: {updateCount}");
-                return this.GetPlayers();
+                Console.WriteLine($"QuizContext UpdateQuestion updateCount: {updateCount}");
+                return this.GetQuestions();
             }
-            Console.WriteLine($"GameDatabaseContext UpdatePlayer playerToUpdate IS null");
+            Console.WriteLine($"QuizContext UpdateQuestion questionToUpdate IS null");
             return null;
 
         }
-
 
 
 

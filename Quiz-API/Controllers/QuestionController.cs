@@ -30,6 +30,10 @@ namespace Quiz_API.Controllers
         public IActionResult Get()
         {
             return Ok(Questions);
+
+            //Context:
+            //return Ok(Context.GetQuestions());
+
         }
 
         // GET api/values/5
@@ -44,6 +48,15 @@ namespace Quiz_API.Controllers
                 return NotFound();
             }
             return Ok(question);
+
+            //Context:
+            //var questionList = Context.GetQuestions().Where(x => x.Id == id);
+            //if (questionList.Count() == 0)
+            //{
+            //    return NotFound("Id not found");
+            //}
+            //return Ok(questionList.First());
+
         }
 
         // POST api/values
@@ -53,6 +66,9 @@ namespace Quiz_API.Controllers
         {
             Questions.Add(question);
             return Ok(Questions);
+
+            //Context:
+            //return Ok(Context.SaveQuestion(question));
         }
 
         // PUT api/values/5
@@ -71,6 +87,20 @@ namespace Quiz_API.Controllers
                 Questions.Add(question);
                 return Ok(Questions);
             }
+
+            //Context:
+            //var questions = Context.UpdateQuestion(question); // This returns too late, I think
+            //Console.WriteLine($"QuestionController PUT question: {question}");
+
+            //if (question == null)
+            //{
+            //    Console.WriteLine($"QuestionController PUT question == null");
+            //    return NotFound("Question not found");
+            //}
+            //Console.WriteLine($"QuestionController PUT question is NOT null");
+            //return Ok(questions);
+
+
         }
 
         // DELETE api/values/5
@@ -89,6 +119,14 @@ namespace Quiz_API.Controllers
                 Questions.Remove(foundQuestion);
                 return NoContent();
             }
+
+            //Context:
+            //var success = Context.DeleteQuestion(question);
+            //if (!success)
+            //{
+            //    return NotFound();
+            //}
+            //return NoContent();
 
         }
     }

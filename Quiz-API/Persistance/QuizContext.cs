@@ -15,7 +15,7 @@ namespace Quiz_API.Persistance
 		{
 		}
 
-
+        // c_R_ud
         public List<Question> GetQuestions()
         {
             Console.WriteLine("QuizContext GetQuestions");
@@ -23,7 +23,7 @@ namespace Quiz_API.Persistance
             return questions;
         }
 
-
+        // C_rud
         public List<Question> SaveQuestion(Question question)
         {
             var addedQuestion =

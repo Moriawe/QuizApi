@@ -79,7 +79,7 @@ namespace Quiz_API.Persistance
 
         }
 
-        // cru_D_
+        // cru_D
         public bool DeleteQuestion(Question question)
         {
             Console.WriteLine("QuizContext DeleteQuestion");

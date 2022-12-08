@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Quiz_API.Models;
 using Swashbuckle.AspNetCore.Annotations;
 
 

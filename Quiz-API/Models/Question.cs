@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Quiz_API
+namespace Quiz_API.Models
 {
 	public class Question
 	{

@@ -13,7 +13,8 @@ namespace Quiz_API.Persistance
 
         public QuizContext()
 		{
-		}
+            //this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
+        }
 
         // c_R_ud
         public List<Question> GetQuestions()
@@ -38,6 +39,40 @@ namespace Quiz_API.Persistance
 
             return this.GetQuestions();
         }
+
+        // cr_U_d
+        public List<Question>? UpdatePlayer(Question question)
+        {
+            var questionToUpdate = this.Questions.Where(x => x.Id == question.Id).FirstOrDefault();
+            Console.WriteLine($"QuizContext UpdatePlayer questionToUpdate: {questionToUpdate}");
+
+            if (playerToUpdate != null)
+            {
+                // Need to do this:
+                playerToUpdate.Id = player.Id;
+                playerToUpdate.Name = player.Name;
+                playerToUpdate.Age = player.Age;
+                playerToUpdate.Health = player.Health;
+                playerToUpdate.Strength = player.Strength;
+
+                Console.WriteLine("GameDatabaseContext updatedPlayer");
+                var updatedPlayer = this.Players.Update(playerToUpdate);
+
+                var updateCount =
+                this.Save();
+                Console.WriteLine($"GameDatabaseContext UpdatePlayer updateCount: {updateCount}");
+                return this.GetPlayers();
+            }
+            Console.WriteLine($"GameDatabaseContext UpdatePlayer playerToUpdate IS null");
+            return null;
+
+        }
+
+
+
+
+
+
 
         public int Save()
         {

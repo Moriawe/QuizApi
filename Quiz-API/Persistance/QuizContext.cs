@@ -14,6 +14,10 @@ namespace Quiz_API.Persistance
         public QuizContext()
 		{
 		}
+
+
+
+
 	}
 }
 

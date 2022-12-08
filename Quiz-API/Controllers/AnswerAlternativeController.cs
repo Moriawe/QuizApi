@@ -29,20 +29,8 @@ namespace Quiz_API.Controllers;
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(AnswerAlternative))]
         public IActionResult Get(string id)
         {
-            List<AnswerAlternative> AnswerAlternatives = new List<AnswerAlternative>();
-            
-            if (Answers == null)
-            {
-                return NotFound();
-            }
-            
-            foreach (var answer in Answers)
-            {
-                if (answer.QuestionId == id)
-                {
-                    AnswerAlternatives.Add(answer);
-                }
-            }
+            List<AnswerAlternative> AnswerAlternatives = Answers.Where(answer => answer.QuestionId == id).ToList();
+
             return Ok(AnswerAlternatives);
         }
         
@@ -62,7 +50,7 @@ namespace Quiz_API.Controllers;
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<AnswerAlternative>))]
         public IActionResult Put([FromBody] AnswerAlternative answer)
         {
-            var foundAnswer = Answers.Where(x => x.Id == answer.Id).FirstOrDefault();
+            var foundAnswer = Answers.FirstOrDefault(x => x.Id == answer.Id);
             if (foundAnswer == null)
             {
                 return NotFound();
@@ -81,7 +69,7 @@ namespace Quiz_API.Controllers;
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
         public IActionResult Delete([FromBody] AnswerAlternative answer)
         {
-            var foundAnswer = Answers.Where(x => x.Id == answer.Id).FirstOrDefault();
+            var foundAnswer = Answers.FirstOrDefault(x => x.Id == answer.Id);
             if (foundAnswer == null)
             {
                 return NotFound();

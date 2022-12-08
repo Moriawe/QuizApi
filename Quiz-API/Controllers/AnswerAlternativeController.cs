@@ -29,7 +29,7 @@ namespace Quiz_API.Controllers;
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(AnswerAlternative))]
         public IActionResult Get(string id)
         {
-            List<AnswerAlternative> AnswerAlternatives = Answers.Where(answer => answer.QuestionId == id).ToList();
+            var AnswerAlternatives = Answers.Where(answer => answer.QuestionId == id).ToList();
 
             return Ok(AnswerAlternatives);
         }

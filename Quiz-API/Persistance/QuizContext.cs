@@ -34,7 +34,7 @@ namespace Quiz_API.Persistance
             //Commit (save) changes to the database.
             var updateCount =
             this.Save();
-            Console.WriteLine($"GameDatabaseContext SavePlayer updateCount: {updateCount}");
+            Console.WriteLine($"QuizContext SaveQuestion updateCount: {updateCount}");
 
             return this.GetQuestions();
         }

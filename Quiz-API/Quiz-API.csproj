@@ -18,8 +18,10 @@
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Swashbuckle.AspNetCore.Annotations" />
+    <None Remove="Persistance\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Persistance\" />
   </ItemGroup>
 </Project>

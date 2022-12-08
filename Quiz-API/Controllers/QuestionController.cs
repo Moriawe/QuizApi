@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
+using Quiz_API.Persistance;
 using Swashbuckle.AspNetCore.Annotations;
 
 
@@ -17,6 +18,8 @@ namespace Quiz_API
     [Produces(MediaTypeNames.Application.Json)]
     public class QuestionController : Controller
     {
+        private QuizContext Context = new QuizContext(); // Should recieve as argument in constructor.
+
         // MOCK Storage:
         static List<Question> Questions = new List<Question>();
 

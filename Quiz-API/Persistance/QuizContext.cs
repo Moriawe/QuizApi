@@ -15,9 +15,13 @@ namespace Quiz_API.Persistance
 		{
 		}
 
+        public int Save()
+        {
+            Console.WriteLine("QuizContext Save");
+            return this.SaveChanges();
+        }
 
 
-
-	}
+    }
 }
 

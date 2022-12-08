@@ -51,7 +51,7 @@ namespace Quiz_API
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
         public IActionResult Post([FromBody] Question question)
         {
-            Context.Save();
+            //Context.Save();
 
             Questions.Add(question);
             return Ok(Questions);

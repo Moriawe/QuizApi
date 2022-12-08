@@ -15,6 +15,30 @@ namespace Quiz_API.Persistance
 		{
 		}
 
+
+        public List<Question> GetQuestions()
+        {
+            Console.WriteLine("QuizContext GetQuestions");
+            var questions = this.Questions.ToList();
+            return questions;
+        }
+
+
+        public List<Question> SaveQuestion(Question question)
+        {
+            var addedQuestion =
+            this.Questions.Add(question);
+            Console.WriteLine($"QuizContext SaveQuestion addedQuestion: {addedQuestion}");
+
+
+            //Commit (save) changes to the database.
+            var updateCount =
+            this.Save();
+            Console.WriteLine($"GameDatabaseContext SavePlayer updateCount: {updateCount}");
+
+            return this.GetQuestions();
+        }
+
         public int Save()
         {
             Console.WriteLine("QuizContext Save");

@@ -2,15 +2,15 @@
 
 public class AnswerAlternative
 {
-    public Guid Id { get; set; }
-    public Guid QuestionId { get; set; }
+    public string Id { get; set; }
+    public string QuestionId { get; set; }
     public string Answer { get; set; }
     public bool IsCorrectAnswer { get; set; }
 
     
-    public AnswerAlternative(string answer, Guid questionId, bool isCorrectAnswer )
+    public AnswerAlternative(string answer, string questionId, bool isCorrectAnswer )
     {
-        Id = Guid.NewGuid();
+        //Id = Guid.NewGuid();
         Answer = answer;
         QuestionId = questionId;
         IsCorrectAnswer = isCorrectAnswer;

@@ -6,13 +6,13 @@ using Quiz_API.Models;
 
 namespace Quiz_API.Persistance
 {
-	public class QuizContext : DbContext
+    public class QuizContext : DbContext
     {
         public DbSet<Question> Questions { get; set; }
         public DbSet<AnswerAlternative> AnswerAlternatives { get; set; }
 
         public QuizContext()
-		{
+        {
             //this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
         }
 
@@ -22,6 +22,18 @@ namespace Quiz_API.Persistance
             Console.WriteLine("QuizContext GetQuestions");
             var questions = this.Questions.ToList();
             return questions;
+        }
+
+        // c_R_ud
+        public Question? GetQuestion(string id)
+        {
+            Console.WriteLine("QuizContext GetQuestion");
+            var question = this.Questions.Where(x => x.Id == id).FirstOrDefault();
+            if (question == null)
+            {
+                return null;
+            }
+            return question;
         }
 
         // C_rud
@@ -65,6 +77,22 @@ namespace Quiz_API.Persistance
             Console.WriteLine($"QuizContext UpdateQuestion questionToUpdate IS null");
             return null;
 
+        }
+
+        // cru_D_
+        public bool DeleteQuestion(Question question)
+        {
+            Console.WriteLine("QuizContext DeleteQuestion");
+            var foundQuestion = this.Questions.Where(x => x.Id == question.Id).FirstOrDefault();
+
+            // inverted if:
+            if (foundQuestion == null)
+            {
+                return false;
+            }
+            this.Questions.Remove(foundQuestion);
+            this.Save();
+            return true;
         }
 
 

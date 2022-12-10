@@ -6,6 +6,7 @@ using Quiz_API.Models;
 
 namespace Quiz_API.Persistance
 {
+    // Rename to QuizDatabaseContext
     public class QuizContext : DbContext
     {
         public DbSet<Question> Questions { get; set; }
@@ -25,7 +26,7 @@ namespace Quiz_API.Persistance
         }
 
         // c_R_ud
-        public Question? GetQuestion(string id)
+        public Question? GetQuestionById(string id)
         {
             Console.WriteLine("QuizContext GetQuestion");
             var question = this.Questions.Where(x => x.Id == id).FirstOrDefault();

@@ -49,7 +49,9 @@ namespace Quiz_API.Controllers
             }
             return Ok(question);
 
-            //Context:
+            //Context: Maybe do this i a service layer (QuestionService), and only return things from that layer
+            // to the methods in this class.
+
             //var questionList = Context.GetQuestions().Where(x => x.Id == id);
             //if (questionList.Count() == 0)
             //{
@@ -62,7 +64,7 @@ namespace Quiz_API.Controllers
         // POST api/values
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
-        public IActionResult Post([FromBody] Question question)
+        public IActionResult Post([FromBody] Question question) // Probably skip [FromBody]
         {
             Questions.Add(question);
             return Ok(Questions);
@@ -75,7 +77,7 @@ namespace Quiz_API.Controllers
         [HttpPut]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
-        public IActionResult Put([FromBody] Question question)
+        public IActionResult Put([FromBody] Question question) // Probably skip [FromBody]
         {
             var foundQuestion = Questions.Where(x => x.Id == question.Id).FirstOrDefault();
             if (question == null)
@@ -88,7 +90,9 @@ namespace Quiz_API.Controllers
                 return Ok(Questions);
             }
 
-            //Context:
+            //Context: Maybe do this i a service layer (QuestionService), and only return things from that layer
+            // to the methods in this class.
+
             //var questions = Context.UpdateQuestion(question); // This returns too late, I think
             //Console.WriteLine($"QuestionController PUT question: {question}");
 
@@ -107,7 +111,7 @@ namespace Quiz_API.Controllers
         [HttpDelete]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
-        public IActionResult Delete([FromBody] Question question)
+        public IActionResult Delete([FromBody] Question question) // Probably skip [FromBody]
         {
             var foundQuestion = Questions.Where(x => x.Id == question.Id).FirstOrDefault();
             if (question == null)
@@ -120,7 +124,9 @@ namespace Quiz_API.Controllers
                 return NoContent();
             }
 
-            //Context:
+            //Context: Maybe do this i a service layer (QuestionService), and only return things from that layer
+            // to the methods in this class.
+
             //var success = Context.DeleteQuestion(question);
             //if (!success)
             //{

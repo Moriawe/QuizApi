@@ -7,12 +7,12 @@ using Quiz_API.Models;
 namespace Quiz_API.Persistance
 {
     // Rename to QuizDatabaseContext
-    public class QuizContext : DbContext
+    public class QuizDatabaseContext : DbContext
     {
         public DbSet<Question> Questions { get; set; }
         public DbSet<AnswerAlternative> AnswerAlternatives { get; set; }
 
-        public QuizContext()
+        public QuizDatabaseContext()
         {
             //this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
         }

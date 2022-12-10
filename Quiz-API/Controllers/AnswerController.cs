@@ -8,15 +8,15 @@ namespace Quiz_API.Controllers;
 
     [Route("api/[controller]")]
     [Produces(MediaTypeNames.Application.Json)]
-    public class AnswerAlternativeController : Controller
+    public class AnswerController : Controller
     {
         // MOCK Storage:
-        static List<AnswerAlternative> Answers = new List<AnswerAlternative>();
+        static List<Answer> Answers = new List<Answer>();
 
 
         // GET: api/values
         [HttpGet]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<AnswerAlternative>))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
         public IActionResult Get()
         {
             return Ok(Answers);
@@ -26,19 +26,20 @@ namespace Quiz_API.Controllers;
         // GET api/values/5
         [HttpGet("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(AnswerAlternative))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Answer))]
         public IActionResult Get(string id)
         {
-            var AnswerAlternatives = Answers.Where(answer => answer.QuestionId == id).ToList();
+            // varför behöver jag inte typa den här variablen?
+            var listOfAnswers = Answers.Where(answer => answer.QuestionId == id).ToList();
 
-            return Ok(AnswerAlternatives);
+            return Ok(listOfAnswers);
         }
         
 
         // POST api/values
         [HttpPost]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<AnswerAlternative>))]
-        public IActionResult Post([FromBody] AnswerAlternative answer)
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
+        public IActionResult Post([FromBody] Answer answer)
         {
             Answers.Add(answer);
             return Ok(Answers);
@@ -47,8 +48,8 @@ namespace Quiz_API.Controllers;
         // PUT api/values/5
         [HttpPut]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<AnswerAlternative>))]
-        public IActionResult Put([FromBody] AnswerAlternative answer)
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
+        public IActionResult Put([FromBody] Answer answer)
         {
             var foundAnswer = Answers.FirstOrDefault(x => x.Id == answer.Id);
             if (foundAnswer == null)
@@ -67,7 +68,7 @@ namespace Quiz_API.Controllers;
         [HttpDelete]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
-        public IActionResult Delete([FromBody] AnswerAlternative answer)
+        public IActionResult Delete([FromBody] Answer answer)
         {
             var foundAnswer = Answers.FirstOrDefault(x => x.Id == answer.Id);
             if (foundAnswer == null)

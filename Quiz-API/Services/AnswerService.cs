@@ -1,4 +1,5 @@
-﻿using Quiz_API.Models;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Quiz_API.Models;
 using Quiz_API.Persistance;
 
 namespace Quiz_API.Services;
@@ -44,35 +45,33 @@ public class AnswerService
         return (answer);
     }
 
-    // Behöver returnera ett nullvärde eller NotFound till Controllern
-    public Answer PutAnswer(Answer answer)
-    {
-        Answer foundAnswer;
-        using (var context = new QuizContext())
-        {
-            foundAnswer = context.Answers.FirstOrDefault(x => x.Id == answer.Id);
-            if (foundAnswer !== null)
-            {
-                context.Answers.Remove(foundAnswer);
-                context.Answers.Add(answer);
-            }
-            return foundAnswer;
-        }
-        
-    }
-
-    // Behöver samma som ovan
-    public void DeleteAnswer(Answer answer)
+    public bool PutAnswer(Answer answer)
     {
         using (var context = new QuizContext())
         {
             var foundAnswer = context.Answers.FirstOrDefault(x => x.Id == answer.Id);
-            if (foundAnswer !== null)
+            if (foundAnswer == null)
             {
-                context.Answers.Remove(foundAnswer);
+                return false;
             }
+            context.Answers.Remove(foundAnswer);
+            context.Answers.Add(answer);
+            return true;
+        }
+        
+    }
 
-            return;
+    public bool DeleteAnswer(string id)
+    {
+        using (var context = new QuizContext())
+        {
+            var foundAnswer = context.Answers.FirstOrDefault(x => x.Id == id);
+            if (foundAnswer == null)
+            {
+                return false;
+            }
+            context.Answers.Remove(foundAnswer);
+            return true;
         }
     }
     

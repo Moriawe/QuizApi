@@ -12,20 +12,19 @@ namespace Quiz_API.Controllers;
     public class AnswerController : Controller
     {
         private AnswerService _answerService;
-        // MOCK Storage:
-        static List<Answer> Answers = new List<Answer>();
         
         public AnswerController()
         {
             _answerService = new AnswerService();
         }
         
+        //TODO Behöver vi hämta alla svar? Känns mer logiskt att hämta ALLA frågor
         // GET: api/values
         [HttpGet]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
         public IActionResult Get()
         {
-            return Ok(Answers);
+            return Ok(_answerService.GetAllAnswers());
         }
 
      
@@ -35,69 +34,63 @@ namespace Quiz_API.Controllers;
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Answer))]
         public IActionResult Get(string id)
         {
-            //var listOfAnswers = Answers.Where(answer => answer.QuestionId == id).ToList();
-            //return Ok(listOfAnswers);
-
-            return Ok(_answerService.GetAnswers(id));
+           return Ok(_answerService.GetAnswers(id));
         }
-        
+
+        // ANVÄNDA ASYNC OCH AWAIT?
+        /*
+        public async Task<ActionResult<Answer>> GetAnswer(string id)
+        {
+            var answers = await _answerService.GetAnswers(id);
+            if (answers == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(answers);
+        }
+        */
 
         // POST api/values
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
         public IActionResult Post([FromBody] Answer answer)
         {
-            //Answers.Add(answer);
-            //return Ok(Answers);
-
             return Ok(_answerService.PostAnswer(answer));
         }
-
+        
         // PUT api/values/5
-        [HttpPut]
+        [HttpPut("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
-        public IActionResult Put([FromBody] Answer answer)
+        public IActionResult Put(string id, [FromBody] Answer answer)
         {
-            // var foundAnswer = Answers.FirstOrDefault(x => x.Id == answer.Id);
-            // if (foundAnswer == null)
-            // {
-            //     return NotFound();
-            // }
-            // else
-            // {
-            //     Answers.Remove(foundAnswer);
-            //     Answers.Add(answer);
-            //     return Ok(Answers);
-            // }
+            if (id != answer.Id)
+            {
+                return BadRequest("Invalid id");
+            }
             
-            // TODO Ingen nullhantering!!
-            Answer foundAnswer = _answerService.PutAnswer(answer);
-
-            return Ok(foundAnswer);
+            var isAnswerUpdated = _answerService.PutAnswer(answer);
+            if (isAnswerUpdated)
+            {
+                return Ok();
+            }
+            return NotFound();
             
         }
 
         // DELETE api/values/5
-        [HttpDelete]
+        [HttpDelete("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
-        public IActionResult Delete([FromBody] Answer answer)
+        public IActionResult Delete(string id)
         {
-            // var foundAnswer = Answers.FirstOrDefault(x => x.Id == answer.Id);
-            // if (foundAnswer == null)
-            // {
-            //     return NotFound();
-            // }
-            // else
-            // {
-            //     Answers.Remove(foundAnswer);
-            //     return NoContent();
-            // }
-            
-            // TODO Ingen nullhantering!!
-            _answerService.DeleteAnswer(answer);
-            return Ok();
+            var isAnswerDeleted = _answerService.DeleteAnswer(id);
+            if (isAnswerDeleted)
+            {
+                return Ok();
+            }
 
+            return NotFound();
         }
     }

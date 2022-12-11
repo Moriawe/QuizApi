@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
 using Quiz_API.Persistance;
 using Swashbuckle.AspNetCore.Annotations;
-
+using Quiz_API.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +18,7 @@ namespace Quiz_API.Controllers
     [Produces(MediaTypeNames.Application.Json)]
     public class QuestionController : Controller
     {
-        private QuizContext Context = new QuizContext(); // Should recieve as argument in constructor.
+        private QuestionService _service = new QuestionService(); // Should recieve as argument in constructor.
 
         // MOCK Storage:
         static List<Question> Questions = new List<Question>();
@@ -29,11 +29,8 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
         public IActionResult Get()
         {
-            return Ok(Questions);
-
-            //Context:
-            //return Ok(Context.GetQuestions());
-
+            //Service:
+            return Ok(_service.Get());
         }
 
         // GET api/values/5
@@ -42,23 +39,13 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Question))]
         public IActionResult Get(string id)
         {
-            var question = Questions.Where(x => x.Id == id).FirstOrDefault();
+            //Service:
+            var question = _service.Get(id);
             if (question == null)
             {
-                return NotFound();
+                return NotFound("Id not found");
             }
             return Ok(question);
-
-            //Context: Maybe do this i a service layer (QuestionService), and only return things from that layer
-            // to the methods in this class.
-
-            //var questionList = Context.GetQuestions().Where(x => x.Id == id);
-            //if (questionList.Count() == 0)
-            //{
-            //    return NotFound("Id not found");
-            //}
-            //return Ok(questionList.First());
-
         }
 
         // POST api/values
@@ -66,11 +53,8 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
         public IActionResult Post([FromBody] Question question) // Probably skip [FromBody]
         {
-            Questions.Add(question);
-            return Ok(Questions);
-
-            //Context:
-            //return Ok(Context.SaveQuestion(question));
+            //Service:
+            return Ok(_service.Post(question));
         }
 
         // PUT api/values/5
@@ -79,32 +63,17 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
         public IActionResult Put([FromBody] Question question) // Probably skip [FromBody]
         {
-            var foundQuestion = Questions.Where(x => x.Id == question.Id).FirstOrDefault();
-            if (question == null)
-            {
-                return NotFound();
-            } else
-            {
-                Questions.Remove(foundQuestion);
-                Questions.Add(question);
-                return Ok(Questions);
-            }
-
-            //Context: Maybe do this i a service layer (QuestionService), and only return things from that layer
-            // to the methods in this class.
-
-            //var questions = Context.UpdateQuestion(question); // This returns too late, I think
+            //Service:
+            var questions = _service.Put(question); // This returns too late, I think
             //Console.WriteLine($"QuestionController PUT question: {question}");
 
-            //if (question == null)
-            //{
-            //    Console.WriteLine($"QuestionController PUT question == null");
-            //    return NotFound("Question not found");
-            //}
+            if (questions == null)
+            {
+                //Console.WriteLine($"QuestionController PUT question == null");
+                return NotFound("Question not found");
+            }
             //Console.WriteLine($"QuestionController PUT question is NOT null");
-            //return Ok(questions);
-
-
+            return Ok(questions);
         }
 
         // DELETE api/values/5
@@ -113,28 +82,16 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
         public IActionResult Delete([FromBody] Question question) // Probably skip [FromBody]
         {
-            var foundQuestion = Questions.Where(x => x.Id == question.Id).FirstOrDefault();
-            if (question == null)
+            //Service:
+            var success = _service.Delete(question);
+            if (!success)
             {
                 return NotFound();
             }
-            else
-            {
-                Questions.Remove(foundQuestion);
-                return NoContent();
-            }
-
-            //Context: Maybe do this i a service layer (QuestionService), and only return things from that layer
-            // to the methods in this class.
-
-            //var success = Context.DeleteQuestion(question);
-            //if (!success)
-            //{
-            //    return NotFound();
-            //}
-            //return NoContent();
-
+            return NoContent();
         }
+
+
     }
 }
 

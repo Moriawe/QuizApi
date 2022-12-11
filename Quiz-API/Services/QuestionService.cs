@@ -7,12 +7,12 @@ namespace Quiz_API.Services
 {
     public class QuestionService
     {
-        private QuizContext Context;
+        private QuizDatabaseContext Context;
 
 
-        public QuestionService(QuizContext context)
+        public QuestionService()
         {
-            Context = context;
+            Context = new QuizDatabaseContext();
         }
 
 
@@ -34,6 +34,11 @@ namespace Quiz_API.Services
         public List<Question>? Put(Question question)
         {
             return Context.UpdateQuestion(question);
+        }
+
+        public bool Delete(Question question)
+        {
+            return Context.DeleteQuestion(question);
         }
 
 

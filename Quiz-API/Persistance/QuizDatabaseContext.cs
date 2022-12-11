@@ -10,9 +10,9 @@ namespace Quiz_API.Persistance
     public class QuizContext : DbContext
     {
         public DbSet<Question> Questions { get; set; }
-        public DbSet<Answer> Answers { get; set; }
- 
-        public QuizContext()
+        public DbSet<Answer> Answer { get; set; }
+
+        public QuizDatabaseContext()
         {
             //this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
         }

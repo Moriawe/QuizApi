@@ -35,7 +35,6 @@ namespace Quiz_API.Controllers;
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Answer))]
         public IActionResult Get(string id)
         {
-            // varför behöver jag inte typa den här variablen?
             //var listOfAnswers = Answers.Where(answer => answer.QuestionId == id).ToList();
             //return Ok(listOfAnswers);
 

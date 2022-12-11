@@ -33,7 +33,7 @@ public class AnswerService
         return listOfAnswers;
     }
     
-    // Skall denna returnera ALLA answers eller bara den man postade?
+    // Skall denna returnera ALLA answers till den frågan eller bara den man postade?
     public Answer PostAnswer(Answer answer)
     {
         using (var context = new QuizContext())

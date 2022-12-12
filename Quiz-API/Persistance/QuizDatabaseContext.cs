@@ -63,7 +63,6 @@ namespace Quiz_API.Persistance
             {
                 // Need to do this:
                 questionToUpdate.Id = question.Id;
-                questionToUpdate.Language = question.Language;
                 questionToUpdate.Text = question.Text;
                 questionToUpdate.Category = question.Category; ;
 

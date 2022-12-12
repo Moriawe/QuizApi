@@ -17,7 +17,6 @@ public class AnswerService
     {
         using (var context = new QuizDatabaseContext())
         {
-            // Behöver omformateras från DbSet till en lista.
             return (context.Answers.ToList());
         }
     }

@@ -6,11 +6,11 @@ using Quiz_API.Models;
 
 namespace Quiz_API.Persistance
 {
-    // Rename to QuizDatabaseContext
+
     public class QuizDatabaseContext : DbContext
     {
         public DbSet<Question> Questions { get; set; }
-        public DbSet<AnswerAlternative> AnswerAlternatives { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         public QuizDatabaseContext()
         {

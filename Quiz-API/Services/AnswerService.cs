@@ -15,7 +15,7 @@ public class AnswerService
     // Vill man någonsin ha ALLA svaren? 
     public List<Answer> GetAllAnswers()
     {
-        using (var context = new QuizContext())
+        using (var context = new QuizDatabaseContext())
         {
             // Behöver omformateras från DbSet till en lista.
             return context.Answers;
@@ -26,7 +26,7 @@ public class AnswerService
     public List<Answer> GetAnswers(string id)
     {
         List<Answer> listOfAnswers;
-        using (var context = new QuizContext())
+        using (var context = new QuizDatabaseContext())
         {
             listOfAnswers = context.Answers.Where(answer => answer.QuestionId == id).ToList();
         }
@@ -37,7 +37,7 @@ public class AnswerService
     // Skall denna returnera ALLA answers till den frågan eller bara den man postade?
     public Answer PostAnswer(Answer answer)
     {
-        using (var context = new QuizContext())
+        using (var context = new QuizDatabaseContext())
         {
             context.Answers.Add(answer);
         }
@@ -47,7 +47,7 @@ public class AnswerService
 
     public bool PutAnswer(Answer answer)
     {
-        using (var context = new QuizContext())
+        using (var context = new QuizDatabaseContext())
         {
             var foundAnswer = context.Answers.FirstOrDefault(x => x.Id == answer.Id);
             if (foundAnswer == null)
@@ -63,7 +63,7 @@ public class AnswerService
 
     public bool DeleteAnswer(string id)
     {
-        using (var context = new QuizContext())
+        using (var context = new QuizDatabaseContext())
         {
             var foundAnswer = context.Answers.FirstOrDefault(x => x.Id == id);
             if (foundAnswer == null)

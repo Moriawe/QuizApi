@@ -21,7 +21,7 @@ namespace Quiz_API.Controllers
         private QuestionService _service = new QuestionService(); // Should recieve as argument in constructor.
 
         // MOCK Storage:
-        static List<Question> Questions = new List<Question>();
+        //static List<Question> Questions = new List<Question>();
 
 
         // GET: api/values
@@ -37,7 +37,7 @@ namespace Quiz_API.Controllers
         [HttpGet("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Question))]
-        public IActionResult Get(string id)
+        public IActionResult Get(Guid id)
         {
             //Service:
             var question = _service.Get(id);

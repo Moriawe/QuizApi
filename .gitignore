@@ -1,3 +1,6 @@
+# sqlite
+Quiz-API/quiz.sqlite*
+
 # globs
 Makefile.in
 *.userprefs

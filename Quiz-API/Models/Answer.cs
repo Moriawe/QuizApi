@@ -12,12 +12,12 @@ public class Answer
     public string QuestionId { get; set; }
     //public Question Question { get; set; }
     
-    public Answer(string answer, string questionId, bool isCorrectAnswer )
-    {
-        //Id = Guid.NewGuid();
-        AnswerText = answer;
-        QuestionId = questionId;
-        IsCorrectAnswer = isCorrectAnswer;
-    }
+    //public Answer(string answer, string questionId, bool isCorrectAnswer )
+    //{
+    //    //Id = Guid.NewGuid();
+    //    AnswerText = answer;
+    //    QuestionId = questionId;
+    //    IsCorrectAnswer = isCorrectAnswer;
+    //}
     
 }

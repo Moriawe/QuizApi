@@ -22,10 +22,14 @@
     <None Remove="Persistance\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Services\" />
+    <None Remove="Repositories\" />
+    <None Remove="Adapters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Persistance\" />
     <Folder Include="Services\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Adapters\" />
   </ItemGroup>
 </Project>

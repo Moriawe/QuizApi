@@ -10,8 +10,6 @@ namespace Quiz_API.Models
 
         //public virtual IList<Answer> Answers { get; set; }
 
-        //public virtual IList<Answer> Answers { get; set; }
-
         public Question(string language, string text, string category)
         {
             this.Id = Guid.NewGuid(); // Let database do this (but sqlite generates Id:s as int:s...)

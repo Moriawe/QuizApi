@@ -6,4 +6,12 @@ public class QuizService
     {
         
     }
+
+    public GetQuiz()
+    {
+        using (var context = new TriviaRepository())
+        {
+            return (context.Answers.ToList());
+        }
+    }
 }

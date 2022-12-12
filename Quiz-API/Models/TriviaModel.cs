@@ -1,6 +1,7 @@
 ﻿namespace Quiz_API.Models;
 
-public class TriviaQuestionItem
+// Datastrukturen som tas emot från Trivia API:et
+public class TriviaModel
 {
     public string Category { get; set; }
     public string Id { get; set; }
@@ -13,7 +14,7 @@ public class TriviaQuestionItem
     //public string regions { get; set; }
     //public bool IsNiche { get; set; }
 
-    public TriviaQuestionItem(string category, string id, string correctAnswer, string[] incorrectAnswer, string question, string difficulty)
+    public TriviaModel(string category, string id, string correctAnswer, string[] incorrectAnswer, string question, string difficulty)
     {
         Category = category;
         Id = id;

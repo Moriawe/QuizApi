@@ -1,5 +1,6 @@
 namespace Quiz_API.Models;
 
+// Klassen vi vill exponera utåt till vårt API
 public class QuizModel
 {
     public string Id { get; set; }

@@ -27,6 +27,7 @@
     <None Remove="Adapters\" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite.Core" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

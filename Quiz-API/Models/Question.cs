@@ -7,6 +7,8 @@ namespace Quiz_API.Models
         public string Language { get; set; } = "svenska";
         public string Text { get; set; }
         public string Category { get; set; } // music, history, film
+		
+        //public virtual IList<Answer> Answers { get; set; }
 
         //public virtual IList<Answer> Answers { get; set; }
 

@@ -12,6 +12,7 @@ public class Answer
     public string QuestionId { get; set; }
     //public Question Question { get; set; }
     
+    // Jennie: Jag behövde tillfälligt bortkommentera nedanstående konstruktor, för att få projektet att bygga. Är osäker på varför.
     //public Answer(string answer, string questionId, bool isCorrectAnswer )
     //{
     //    //Id = Guid.NewGuid();
@@ -19,5 +20,6 @@ public class Answer
     //    QuestionId = questionId;
     //    IsCorrectAnswer = isCorrectAnswer;
     //}
+
     
 }

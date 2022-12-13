@@ -23,6 +23,11 @@ namespace Quiz_API
         {
             return _context.Answers.Where(x => x.Id == Id).FirstOrDefault();
         }
+        
+        public List<Answer> GetAnswers(Guid questionId)
+        {
+            return _context.Answers.Where(answer => answer.QuestionId == questionId).ToList();
+        }
 
         public Answer Post(Answer answer)
         {

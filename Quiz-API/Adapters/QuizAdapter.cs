@@ -1,5 +1,6 @@
 using Quiz_API.Models;
 using Quiz_API.Persistance;
+using Quiz_API.Repositories;
 
 namespace Quiz_API.Adapters;
 
@@ -8,32 +9,48 @@ public class QuizAdapter
 {
     private QuizDatabaseContext _context;
 
-    private Answer? Answer;
-    private Question? question;
-    private QuizModel? quizmodel;
+    private QuestionRepository _questionRepository;
+    private AnswerRepository _answerRepository;
+
 
     public QuizAdapter()
     {
         _context = new QuizDatabaseContext();
+        _questionRepository = new QuestionRepository();
+        _answerRepository = new AnswerRepository();
     }
     
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID
     public QuizModel GetQuiz(Guid id)
     {
-        Question question;
-        List<Answer> listOfAnswers;
-        QuizModel responseQuiz;
+
+        Question question = _context.Questions.Where(x => x.Id == id).FirstOrDefault();
+        List<Answer> listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
         
-        // Hämtar hem rätt fråga OCH svarsalternativen till den frågan
-        question = _context.Questions.Where(x => x.Id == id).FirstOrDefault();
-        listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
-        
-        List<Answer> Answers = listOfAnswers.ToList();
-        
-        responseQuiz = new QuizModel(question.Category, Answers, question.Text);
+        QuizModel responseQuiz = new QuizModel(question.Category, listOfAnswers, question.Text);
 
         return responseQuiz;
     }
+
+    public QuizModel GetOneRandomQuiz()
+    {
+        List<Question> Questions = _questionRepository.Get();
+        var random = new Random();
+        int index = random.Next(Questions.Count);
+        var chosenQuestion = Questions[index];
+        Console.WriteLine(chosenQuestion);
+
+
+        List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);
+
+        QuizModel responseQuiz = new QuizModel(chosenQuestion.Category, Answers, chosenQuestion.Text);
+        return responseQuiz;
+    }
+    
+    //public QuizModel GetOneCategoryQuiz(Category category)
+    //{
+    //    
+    //}
 
     // Finns quizzen i vår databas?
     public bool DoesQuizExist(Guid id)

@@ -1,6 +1,11 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Quiz_API.Persistance;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Later: <Interface, ImplementingClass>
+builder.Services.AddScoped<QuizDatabaseContext, QuizDatabaseContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -26,6 +26,12 @@ public class QuizService
         QuizModel DbQuiz = _quizAdapter.GetQuiz(id);
         return (DbQuiz);
     }
+
+    public QuizModel GetOneDbQuiz()
+    {
+        QuizModel DbQuiz = _quizAdapter.GetOneRandomQuiz();
+        return (DbQuiz);
+    }
     
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
     //public QuizModel GetTriviaQuiz()

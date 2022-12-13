@@ -8,9 +8,9 @@ public class QuizAdapter
 {
     private QuizDatabaseContext _context;
 
-    private Answer? Answer { get; set; }
-    private Question? question { get; set; }
-    private QuizModel? quizmodel { get; set; }
+    private Answer? Answer;
+    private Question? question;
+    private QuizModel? quizmodel;
 
     public QuizAdapter()
     {
@@ -18,7 +18,7 @@ public class QuizAdapter
     }
     
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID
-    public QuizModel getQuiz(Guid id)
+    public QuizModel GetQuiz(Guid id)
     {
         Question question;
         List<Answer> listOfAnswers;
@@ -28,16 +28,15 @@ public class QuizAdapter
         question = _context.Questions.Where(x => x.Id == id).FirstOrDefault();
         listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
         
-        Answer correctAnswer = listOfAnswers.Where(x => x.IsCorrectAnswer == true).FirstOrDefault();
-        List<Answer> inCorrectAnswers = listOfAnswers.Where(x => x.IsCorrectAnswer == false).ToList();
+        List<Answer> Answers = listOfAnswers.ToList();
         
-        responseQuiz = new QuizModel(question.Category, correctAnswer, inCorrectAnswers, question.Text);
+        responseQuiz = new QuizModel(question.Category, Answers, question.Text);
 
         return responseQuiz;
     }
 
     // Finns quizzen i vår databas?
-    public bool doesQuizExist(Guid id)
+    public bool DoesQuizExist(Guid id)
     {
         if (_context.Questions.Any(x => x.Id == id))
             //(Array.Exists(_context.Questions, Question => Question.Id == id))

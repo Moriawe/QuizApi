@@ -13,16 +13,14 @@ public class Answer
     //public Question Question { get; set; }
 
 
-    // Jennie: Jag behövde tillfälligt bortkommentera nedanstående konstruktor, för att få projektet att bygga. Är osäker på varför.
-    //public Answer(string answer, string questionId, bool isCorrectAnswer )
+     //Jennie: Jag behövde tillfälligt bortkommentera nedanstående konstruktor, för att få projektet att bygga. Är osäker på varför.
 
-    //{
-    //public Answer(string answer, string questionId, bool isCorrectAnswer )
-    //{
-    //    //Id = Guid.NewGuid();
-    //    AnswerText = answer;
-    //    QuestionId = questionId;
-    //    IsCorrectAnswer = isCorrectAnswer;
-    //}
+    public Answer(string answer, Guid questionId, bool isCorrectAnswer )
+    {
+        //Id = Guid.NewGuid();
+        AnswerText = answer;
+        QuestionId = questionId;
+        IsCorrectAnswer = isCorrectAnswer;
+    }
 
 }

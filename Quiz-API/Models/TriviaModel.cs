@@ -3,18 +3,21 @@
 // Datastrukturen som tas emot från Trivia API:et
 public class TriviaModel
 {
+    
     public string Category { get; set; }
     public string Id { get; set; }
     public string CorrectAnswer { get; set; }
-    public string[] IncorrectAnswer { get; set; }
+    public List<string> IncorrectAnswers { get; set; }
     public string Question { get; set; }
-    //public string[] Tags { get; set; }
-    //public string Type { get; set; }
+    public List<string> Tags { get; set; }
+    public string Type { get; set; }
     public string Difficulty { get; set; }
-    //public string regions { get; set; }
-    //public bool IsNiche { get; set; }
-
+    public List<object> Regions { get; set; }
+    public bool IsNiche { get; set; }
+    
+    /*
     public TriviaModel(string category, string id, string correctAnswer, string[] incorrectAnswer, string question, string difficulty)
+     
     {
         Category = category;
         Id = id;
@@ -23,6 +26,7 @@ public class TriviaModel
         Question = question;
         Difficulty = difficulty;
     }
+    */
     
 }
 /*

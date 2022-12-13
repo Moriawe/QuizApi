@@ -20,11 +20,12 @@ public class QuizService
     //    return (quizModel);
     //}
 
-    //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
-    //public QuizModel GetDBQuiz()
-    //{
-    //    return (quizModel);
-    //}
+    // Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
+    public QuizModel GetDBQuiz(Guid id)
+    {
+        QuizModel DbQuiz = _quizAdapter.GetQuiz(id);
+        return (DbQuiz);
+    }
     
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
     //public QuizModel GetTriviaQuiz()

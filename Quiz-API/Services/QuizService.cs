@@ -39,20 +39,20 @@ public class QuizService
     //    return (quizModel);
     //}
     
-    //// Kolla om användaren svarat rätt
-    //public bool isAnswerCorrect(Answer answer)
-    //{
+    // Kolla om användaren svarat rätt
+    public bool isAnswerCorrect(Answer answer)
+    {
         
-    //    using (var context = new QuizDatabaseContext())
-    //    {
-    //        if (answer == .CorrectAnswer)
-    //        {
-    //            return true;
-    //        }
-    //        return false;
-    //    }
+        using (var context = new QuizDatabaseContext())
+        {
+            if (answer.IsCorrectAnswer)
+            {
+                return true;
+            }
+            return false;
+        }
        
-    //}
+    }
     
     //// Kolla om quizzen redan finns i databasen
     //public checkIfQuizExists()

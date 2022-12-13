@@ -8,11 +8,11 @@ public class QuizModel
     public List<Answer> Answers { get; set; }
     public string Question { get; set; }
 
-    public QuizModel(string category, List<Answer> Answers, string question)
+    public QuizModel(string category, List<Answer> answers, string question)
     {
         Id = Guid.NewGuid();
         Category = category;
-        Answers = Answers;
+        Answers = answers;
         Question = question;
     }
 }

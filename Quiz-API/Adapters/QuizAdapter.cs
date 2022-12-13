@@ -8,9 +8,10 @@ public class QuizAdapter
 {
     private QuizDatabaseContext _context;
 
-    private Answer Answer { get; set; }
-    private Question question { get; set; }
-    private QuizModel quizmodel { get; set; }
+    private Answer? Answer { get; set; }
+    private Question? question { get; set; }
+    private QuizModel? quizmodel { get; set; }
+
     public QuizAdapter()
     {
         _context = new QuizDatabaseContext();

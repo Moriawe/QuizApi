@@ -5,7 +5,7 @@ namespace Quiz_API.Models;
 public class Answer
 {
     public Guid Id { get; set; }
-    public string AnswerText { get; set; }
+    public string? AnswerText { get; set; }
     public bool IsCorrectAnswer { get; set; }
     
     //[ForeignKey(nameof(QuestionId))]

@@ -32,7 +32,7 @@ namespace Quiz_API.Controllers;
         [HttpGet("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Answer))]
-        public IActionResult Get(string id)
+        public IActionResult Get(Guid id)
         {
            return Ok(_answerService.GetAnswers(id));
         }
@@ -63,7 +63,7 @@ namespace Quiz_API.Controllers;
         [HttpPut("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
-        public IActionResult Put(string id, [FromBody] Answer answer)
+        public IActionResult Put(Guid id, [FromBody] Answer answer)
         {
             if (id != answer.Id)
             {
@@ -83,7 +83,7 @@ namespace Quiz_API.Controllers;
         [HttpDelete("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(Guid id)
         {
             var isAnswerDeleted = _answerService.DeleteAnswer(id);
             if (isAnswerDeleted)

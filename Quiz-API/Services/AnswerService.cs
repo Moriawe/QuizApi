@@ -22,7 +22,7 @@ public class AnswerService
     }
     
     // Begär en string ID just nu, kan behöva ändras till Guid.
-    public List<Answer> GetAnswers(string id)
+    public List<Answer> GetAnswers(Guid id)
     {
         List<Answer> listOfAnswers;
         using (var context = new QuizDatabaseContext())
@@ -60,7 +60,7 @@ public class AnswerService
         
     }
 
-    public bool DeleteAnswer(string id)
+    public bool DeleteAnswer(Guid id)
     {
         using (var context = new QuizDatabaseContext())
         {

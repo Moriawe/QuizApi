@@ -5,7 +5,7 @@ namespace Quiz_API.Models
     {
         public Guid Id { get; set; }
         public string Text { get; set; }
-        public string Category { get; set; } // music, history, film
+        public string Category { get; set; } // music, history, film // Maybe Category (table and class).
 
         //public virtual IList<Answer> Answers { get; set; }
 

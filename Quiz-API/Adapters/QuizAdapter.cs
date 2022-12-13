@@ -7,17 +7,18 @@ namespace Quiz_API.Adapters;
 public class QuizAdapter
 {
     private QuizDatabaseContext _context;
-    
-    private Answer Answer;
-    private Question question;
-    private QuizModel quizmodel;
+
+    private Answer? Answer { get; set; }
+    private Question? question { get; set; }
+    private QuizModel? quizmodel { get; set; }
+
     public QuizAdapter()
     {
         _context = new QuizDatabaseContext();
     }
     
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID
-    public QuizModel getQuiz(string id)
+    public QuizModel getQuiz(Guid id)
     {
         Question question;
         List<Answer> listOfAnswers;
@@ -36,7 +37,7 @@ public class QuizAdapter
     }
 
     // Finns quizzen i vår databas?
-    public bool doesQuizExist(string id)
+    public bool doesQuizExist(Guid id)
     {
         if (_context.Questions.Any(x => x.Id == id))
             //(Array.Exists(_context.Questions, Question => Question.Id == id))

@@ -9,7 +9,7 @@ namespace Quiz_API.Models
 
         //public virtual IList<Answer> Answers { get; set; }
 
-        public Question(string text, string category)
+        public Question(string text, string category) // Maybe Category category (table and class).
         {
             this.Id = Guid.NewGuid(); // Let database do this (but sqlite generates Id:s as int:s...)
             this.Text = text;

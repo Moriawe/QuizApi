@@ -10,9 +10,9 @@ namespace Quiz_API.Repositories
         private QuizDatabaseContext _context;
 
 
-        public QuestionRepository()
+        public QuestionRepository(QuizDatabaseContext context)
         {
-            _context = new QuizDatabaseContext();
+            _context = context;
         }
 
 

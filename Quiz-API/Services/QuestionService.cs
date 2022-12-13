@@ -14,9 +14,9 @@ namespace Quiz_API.Services
         private QuestionAdapter _adapter;
 
 
-        public QuestionService()
+        public QuestionService(QuestionAdapter adapter)
         {
-            _adapter = new QuestionAdapter();
+            _adapter = adapter;
         }
 
 

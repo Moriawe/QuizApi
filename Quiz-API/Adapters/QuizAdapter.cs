@@ -8,8 +8,10 @@ namespace Quiz_API.Adapters;
 public class QuizAdapter
 {
     private QuizDatabaseContext _context;
+
     private QuestionRepository _questionRepository;
     private AnswerRepository _answerRepository;
+
 
     public QuizAdapter()
     {
@@ -21,6 +23,7 @@ public class QuizAdapter
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID
     public QuizModel GetQuiz(Guid id)
     {
+
         Question question = _context.Questions.Where(x => x.Id == id).FirstOrDefault();
         List<Answer> listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
         
@@ -36,6 +39,7 @@ public class QuizAdapter
         int index = random.Next(Questions.Count);
         var chosenQuestion = Questions[index];
         Console.WriteLine(chosenQuestion);
+
 
         List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);
 

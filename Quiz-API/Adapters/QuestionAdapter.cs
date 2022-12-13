@@ -9,9 +9,9 @@ namespace Quiz_API.Adapters
     {
         private QuestionRepository _repository;
 
-        public QuestionAdapter()
+        public QuestionAdapter(QuestionRepository repository)
         {
-            _repository = new QuestionRepository();
+            _repository = repository;
         }
 
 

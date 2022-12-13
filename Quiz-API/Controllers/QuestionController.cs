@@ -18,7 +18,12 @@ namespace Quiz_API.Controllers
     [Produces(MediaTypeNames.Application.Json)]
     public class QuestionController : Controller
     {
-        private QuestionService _service = new QuestionService(); // Should recieve as argument in constructor.
+        private QuestionService _service; // Should recieve as argument in constructor.
+
+        public QuestionController(QuestionService service)
+        {
+            _service = service;
+        }
 
         // MOCK Storage:
         //static List<Question> Questions = new List<Question>();

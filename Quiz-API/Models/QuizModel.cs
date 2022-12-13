@@ -5,11 +5,12 @@ public class QuizModel
 {
     public string Id { get; set; }
     public Category Category { get; set; }
+    // Skall rätt svar också vara en lista? ifall det finns flera rätt svar?
     public Answer CorrectAnswer { get; set; }
-    public Answer[] IncorrectAnswers { get; set; }
+    public List<Answer> IncorrectAnswers { get; set; }
     public string Question { get; set; }
 
-    public QuizModel(Category category, Answer correctAnswer, Answer[] incorrectAnswers, string question)
+    public QuizModel(Category category, Answer correctAnswer, List<Answer> incorrectAnswers, string question)
     {
         //Id = Guid.NewGuid();
         Category = category;

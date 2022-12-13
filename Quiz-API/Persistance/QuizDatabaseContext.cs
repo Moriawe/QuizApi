@@ -14,15 +14,13 @@ namespace Quiz_API.Persistance
 
         public QuizDatabaseContext()
         {
-            //this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
+            this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
         }
 
-        // c_R_ud
-        public List<Question> GetQuestions()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Console.WriteLine("QuizContext GetQuestions");
-            var questions = this.Questions.ToList();
-            return questions;
+            optionsBuilder.UseSqlite("Filename=quiz.sqlite");
+            Console.WriteLine("QuizDatabaseContext OnConfiguring");
         }
 
         // c_R_ud
@@ -95,25 +93,13 @@ namespace Quiz_API.Persistance
             return true;
         }
 
-
-
-
-
-
         public int Save()
         {
             Console.WriteLine("QuizContext Save");
-
-            // "No database provider has been configured for this DbContext.
-            // A provider can be configured by overriding the 'DbContext.OnConfiguring' method
-            // or by using 'AddDbContext' on the application service provider.
-            // If 'AddDbContext' is used, then also ensure that your DbContext type accepts a
-            // DbContextOptions<TContext> object in its constructor and passes it to
-            // the base constructor for DbContext."
-
-            return 0;
-            //return this.SaveChanges();
+            return this.SaveChanges();
         }
+
+
 
 
     }

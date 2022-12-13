@@ -11,13 +11,18 @@ public class Answer
     //[ForeignKey(nameof(QuestionId))]
     public string QuestionId { get; set; }
     //public Question Question { get; set; }
-    
-    public Answer(string answer, string questionId, bool isCorrectAnswer )
-    {
-        //Id = Guid.NewGuid();
-        AnswerText = answer;
-        QuestionId = questionId;
-        IsCorrectAnswer = isCorrectAnswer;
-    }
-    
+
+
+    // Jennie: Jag behövde tillfälligt bortkommentera nedanstående konstruktor, för att få projektet att bygga. Är osäker på varför.
+    //public Answer(string answer, string questionId, bool isCorrectAnswer )
+
+    //{
+    //public Answer(string answer, string questionId, bool isCorrectAnswer )
+    //{
+    //    //Id = Guid.NewGuid();
+    //    AnswerText = answer;
+    //    QuestionId = questionId;
+    //    IsCorrectAnswer = isCorrectAnswer;
+    //}
+
 }

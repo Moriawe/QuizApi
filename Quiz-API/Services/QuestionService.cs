@@ -1,44 +1,49 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
-using Quiz_API.Persistance;
+using Quiz_API.Adapters;
 
 namespace Quiz_API.Services
 {
+
+    // Maybe QuisService instead
+    // Build ViewModel that QuizController can use
     public class QuestionService
     {
-        private QuizDatabaseContext Context;
+        //private QuizDatabaseContext Context;
+        private QuestionAdapter _adapter;
 
 
         public QuestionService()
         {
-            Context = new QuizDatabaseContext();
+            _adapter = new QuestionAdapter();
         }
+
 
 
         public List<Question> Get()
         {
-            return Context.GetQuestions();
+            return _adapter.GetAllQuestions();
         }
 
-        public Question? Get(string Id)
+        public Question? Get(Guid Id)
         {
-            return Context.GetQuestionById(Id);
+            return _adapter.GetQuestionById(Id);
         }
 
-        public List<Question> Post(Question question)
+        public Question Post(Question question)
         {
-            return Context.SaveQuestion(question);
+            return _adapter.SaveNewQuestion(question);
         }
 
-        public List<Question>? Put(Question question)
+        public Question? Put(Question question)
         {
-            return Context.UpdateQuestion(question);
+            return _adapter.UpdateQuestion(question);
         }
 
         public bool Delete(Question question)
         {
-            return Context.DeleteQuestion(question);
+            return _adapter.DeleteQuestion(question);
         }
 
 

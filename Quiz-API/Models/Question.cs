@@ -16,6 +16,6 @@ namespace Quiz_API.Models
             this.Category = category;
 
         }
-	}
+    }
 }
 

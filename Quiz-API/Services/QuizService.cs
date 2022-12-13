@@ -13,49 +13,49 @@ public class QuizService
         _quizAdapter = new QuizAdapter();
     }
     
-    // Slumpa vilken väg den skall hämta en quiz
-    public QuizModel GetQuiz()
-    {
+    //// Slumpa vilken väg den skall hämta en quiz
+    //public QuizModel GetQuiz()
+    //{
         
-        return (quizModel);
-    }
+    //    return (quizModel);
+    //}
 
-    // Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
-    public QuizModel GetDBQuiz()
-    {
-        return (quizModel);
-    }
+    //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
+    //public QuizModel GetDBQuiz()
+    //{
+    //    return (quizModel);
+    //}
     
-    // Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
-    public QuizModel GetTriviaQuiz()
-    {
-        return (quizModel);
-    }
+    //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
+    //public QuizModel GetTriviaQuiz()
+    //{
+    //    return (quizModel);
+    //}
     
-    // Kolla om användaren svarat rätt
-    public bool isAnswerCorrect(Answer answer)
-    {
+    //// Kolla om användaren svarat rätt
+    //public bool isAnswerCorrect(Answer answer)
+    //{
         
-        using (var context = new QuizDatabaseContext())
-        {
-            if (answer == .CorrectAnswer)
-            {
-                return true;
-            }
-            return false;
-        }
+    //    using (var context = new QuizDatabaseContext())
+    //    {
+    //        if (answer == .CorrectAnswer)
+    //        {
+    //            return true;
+    //        }
+    //        return false;
+    //    }
        
-    }
+    //}
     
-    // Kolla om quizzen redan finns i databasen
-    public checkIfQuizExists()
-    {
+    //// Kolla om quizzen redan finns i databasen
+    //public checkIfQuizExists()
+    //{
         
-    }
+    //}
     
-    // Lägg till quizzen i databasen
-    public AddQuizToDatabase()
-    {
+    //// Lägg till quizzen i databasen
+    //public AddQuizToDatabase()
+    //{
         
-    }
+    //}
 }

@@ -4,7 +4,8 @@ using Quiz_API.Repositories;
 
 namespace Quiz_API
 {
-	public interface IQuizAdapter
+    // Add more methods, or remove, according to QuizAdapter
+    public interface IQuizAdapter
 	{
         public QuizModel GetQuiz(Guid id);
 

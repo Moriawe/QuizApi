@@ -19,17 +19,17 @@ namespace Quiz_API.Controllers;
         }
         
         // GET: api/values
-        [HttpGet]
+        [HttpGet("Database")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
-        /* public IActionResult Get()
+         public IActionResult GetDatabase()
         {
             return Ok(_quizService.GetOneDbQuiz());
-        } */
+        } 
         
         // GET: api/values
-        [HttpGet]
+        [HttpGet("Trivia")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
-        public IActionResult Get()
+        public IActionResult GetTrivia()
         {
             return Ok(_quizService.GetTriviaQuiz());
         }

@@ -8,9 +8,9 @@ namespace Quiz_API.Adapters;
 public class QuizAdapter
 {
     private IQuestionRepository _questionRepository;
-    private AnswerRepository _answerRepository;
+    private IAnswerRepository _answerRepository;
     
-    public QuizAdapter(IQuestionRepository questionRepository, AnswerRepository answerRepository)
+    public QuizAdapter(IQuestionRepository questionRepository, IAnswerRepository answerRepository)
     {
         _questionRepository = questionRepository;
         _answerRepository = answerRepository;

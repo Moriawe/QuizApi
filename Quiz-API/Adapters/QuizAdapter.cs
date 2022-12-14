@@ -61,8 +61,7 @@ public class QuizAdapter
         
         foreach (Answer answer in quiz.Answers)
         {
-            Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
-            _answerRepository.Post(responseAnswer);
+            _answerRepository.Post(answer);
         }
     }
 
@@ -73,8 +72,7 @@ public class QuizAdapter
         
         foreach (Answer answer in quiz.Answers)
         {
-            Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
-            _answerRepository.Put(responseAnswer);
+            _answerRepository.Put(answer);
         }
     }
     public void Delete(QuizModel quiz)
@@ -84,8 +82,7 @@ public class QuizAdapter
         
         foreach (Answer answer in quiz.Answers)
         {
-            Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
-            _answerRepository.Delete(responseAnswer);
+            _answerRepository.Delete(answer);
         }
     }
     

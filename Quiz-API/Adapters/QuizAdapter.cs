@@ -74,7 +74,15 @@ public class QuizAdapter
 
     public void Put(QuizModel quiz)
     {
+        Question question = new Question(quiz.Question, quiz.Category);
+        _questionRepository.Put(question);
         
+        foreach (Answer answer in quiz.Answers)
+        {
+            Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
+            _answerRepository.Put(responseAnswer);
+        }
     }
+    
     
 }

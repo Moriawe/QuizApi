@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Later: <Interface, ImplementingClass>
 builder.Services.AddScoped<IQuizDatabaseContext, QuizDatabaseContext>();
-builder.Services.AddScoped<QuestionRepository, QuestionRepository>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<QuestionAdapter, QuestionAdapter>();
 builder.Services.AddScoped<QuestionService, QuestionService>();
 

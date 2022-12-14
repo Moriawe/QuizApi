@@ -7,9 +7,9 @@ namespace Quiz_API.Adapters
 {
     public class QuestionAdapter
     {
-        private QuestionRepository _repository;
+        private IQuestionRepository _repository;
 
-        public QuestionAdapter(QuestionRepository repository)
+        public QuestionAdapter(IQuestionRepository repository)
         {
             _repository = repository;
         }

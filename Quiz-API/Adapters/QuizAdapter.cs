@@ -16,6 +16,8 @@ public class QuizAdapter
         _answerRepository = new AnswerRepository();
     }
     
+    // Skall det bara finnas en generell get metod som anropas på olika sätt ifrån service? 
+    
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID
     public QuizModel GetQuiz(Guid id)
     {
@@ -57,7 +59,22 @@ public class QuizAdapter
 
         return false;
     }
-    
-    //Save quiz to database
+
+    public void Post(QuizModel quiz)
+    {
+        Question question = new Question(quiz.Question, quiz.Category);
+        _questionRepository.Post(question);
+        
+        foreach (Answer answer in quiz.Answers)
+        {
+            Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
+            _answerRepository.Post(responseAnswer);
+        }
+    }
+
+    public void Put(QuizModel quiz)
+    {
+        
+    }
     
 }

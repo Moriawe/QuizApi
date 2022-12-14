@@ -11,14 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Later: <Interface, ImplementingClass>
 builder.Services.AddScoped<IQuizDatabaseContext, QuizDatabaseContext>();
 builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
-builder.Services.AddScoped<QuestionAdapter, QuestionAdapter>();
-builder.Services.AddScoped<QuestionService, QuestionService>();
+builder.Services.AddScoped<QuestionAdapter, QuestionAdapter>(); // Maybe skip
+builder.Services.AddScoped<QuestionService, QuestionService>(); // Maybe skip
 
 builder.Services.AddScoped<QuizAdapter, QuizAdapter>();
 builder.Services.AddScoped<QuizService, QuizService>();
 
 builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
-builder.Services.AddScoped<AnswerService, AnswerService>();
+builder.Services.AddScoped<AnswerService, AnswerService>(); // Maybe skip
 
 
 

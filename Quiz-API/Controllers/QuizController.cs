@@ -13,9 +13,9 @@ namespace Quiz_API.Controllers;
     {
         private QuizService _quizService;
         
-        public QuizController()
+        public QuizController(QuizService quizService)
         {
-            _quizService = new QuizService();
+        _quizService = quizService;
         }
         
         // GET: api/values

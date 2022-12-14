@@ -8,9 +8,9 @@ namespace Quiz_API.Services;
 public class QuizService
 {
     private QuizAdapter _quizAdapter;
-    public QuizService()
+    public QuizService(QuizAdapter quizAdapter)
     {
-        _quizAdapter = new QuizAdapter();
+        _quizAdapter = quizAdapter;
     }
     
     //// Slumpa vilken väg den skall hämta en quiz

@@ -13,10 +13,10 @@ public class QuizAdapter
     private AnswerRepository _answerRepository;
 
 
-    public QuizAdapter()
+    public QuizAdapter(QuestionRepository questionRepository)
     {
         _context = new QuizDatabaseContext();
-        _questionRepository = new QuestionRepository();
+        //_questionRepository = new QuestionRepository();
         _answerRepository = new AnswerRepository();
     }
     

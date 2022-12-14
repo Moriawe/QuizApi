@@ -14,7 +14,6 @@ public class QuizAdapter
     {
         _questionRepository = questionRepository;
         _answerRepository = answerRepository;
-
     }
     
     // Skall det bara finnas en generell get metod som anropas på olika sätt ifrån service? 
@@ -37,20 +36,14 @@ public class QuizAdapter
         int index = random.Next(Questions.Count);
         var chosenQuestion = Questions[index];
         Console.WriteLine(chosenQuestion);
-
-
+        
         List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);
 
         QuizModel responseQuiz = new QuizModel(chosenQuestion.Category, Answers, chosenQuestion.Text);
         return responseQuiz;
     }
-    
-    //public QuizModel GetOneCategoryQuiz(Category category)
-    //{
-    //    
-    //}
 
-    // Finns quizzen i vår databas?
+    // Finns quizzen i vår databas? I Service? 
     public bool DoesQuizExist(Guid id)
     {
         if (_questionRepository.Get().Any(x => x.Id == id))

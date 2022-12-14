@@ -6,11 +6,11 @@ namespace Quiz_API
 {
     public class AnswerRepository
     {
-        private QuizDatabaseContext _context;
+        private IQuizDatabaseContext _context;
 
-        public AnswerRepository()
+        public AnswerRepository(IQuizDatabaseContext context)
         {
-            _context = new QuizDatabaseContext();
+            _context = context;
         }
 
 

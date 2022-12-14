@@ -9,11 +9,13 @@ public class QuizAdapter
 {
     private QuestionRepository _questionRepository;
     private AnswerRepository _answerRepository;
-    
-    public QuizAdapter(QuestionRepository questionRepository)
+
+
+    public QuizAdapter(QuestionRepository questionRepository, AnswerRepository answerRepository)
     {
-        _questionRepository = new QuestionRepository();
-        _answerRepository = new AnswerRepository();
+        _questionRepository = questionRepository;
+        _answerRepository = answerRepository;
+
     }
     
     // Skall det bara finnas en generell get metod som anropas på olika sätt ifrån service? 

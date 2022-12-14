@@ -33,7 +33,7 @@ public class QuizAdapter
     {
         List<Question> Questions = _questionRepository.Get();
         var random = new Random();
-        int index = random.Next(Questions.Count);
+        int index = random.Next(Questions.Count)-1;
         var chosenQuestion = Questions[index];
 
         List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);

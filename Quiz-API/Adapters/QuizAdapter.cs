@@ -13,11 +13,11 @@ public class QuizAdapter
     private AnswerRepository _answerRepository;
 
 
-    public QuizAdapter(QuestionRepository questionRepository, IQuizDatabaseContext context)
+    public QuizAdapter(QuestionRepository questionRepository, AnswerRepository answerRepository, IQuizDatabaseContext context)
     {
         _context = context;
         //_questionRepository = new QuestionRepository();
-        _answerRepository = new AnswerRepository();
+        _answerRepository = answerRepository;
     }
     
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID

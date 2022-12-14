@@ -13,9 +13,9 @@ namespace Quiz_API.Controllers;
     {
         private AnswerService _answerService;
         
-        public AnswerController()
+        public AnswerController(AnswerService answerService)
         {
-            _answerService = new AnswerService();
+        _answerService = answerService;
         }
         
         //TODO Behöver vi hämta alla svar? Känns mer logiskt att hämta ALLA frågor

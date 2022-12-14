@@ -17,6 +17,14 @@ builder.Services.AddScoped<QuestionService, QuestionService>();
 builder.Services.AddScoped<QuizAdapter, QuizAdapter>();
 builder.Services.AddScoped<QuizService, QuizService>();
 
+builder.Services.AddScoped<AnswerRepository, AnswerRepository>();
+builder.Services.AddScoped<AnswerService, AnswerService>();
+
+
+
+
+
+
 
 
 

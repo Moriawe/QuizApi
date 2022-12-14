@@ -35,8 +35,7 @@ public class QuizAdapter
         var random = new Random();
         int index = random.Next(Questions.Count);
         var chosenQuestion = Questions[index];
-        //Console.WriteLine(chosenQuestion);
-        
+
         List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);
 
         QuizModel responseQuiz = new QuizModel(chosenQuestion.Category, chosenQuestion.TriviaId, Answers, chosenQuestion.Text);

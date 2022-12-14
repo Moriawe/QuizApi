@@ -27,6 +27,10 @@
     <None Remove="Adapters\" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite.Core" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Interfaces\" />
+    <None Remove="Interfaces\Persistance\" />
+    <None Remove="Interfaces\Repositories\" />
+    <None Remove="Interfaces\Adapters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -34,5 +38,9 @@
     <Folder Include="Services\" />
     <Folder Include="Repositories\" />
     <Folder Include="Adapters\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Persistance\" />
+    <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="Interfaces\Adapters\" />
   </ItemGroup>
 </Project>

@@ -14,12 +14,12 @@ public class Answer
 
     public Answer()
     {
-        
+        Id = Guid.NewGuid();
     }
     
     public Answer(string answer, Guid questionId, bool isCorrectAnswer)
     {
-        //Id = Guid.NewGuid();
+        Id = Guid.NewGuid();
         AnswerText = answer;
         QuestionId = questionId;
         IsCorrectAnswer = isCorrectAnswer;

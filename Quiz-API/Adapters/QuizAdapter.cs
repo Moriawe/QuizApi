@@ -9,8 +9,7 @@ public class QuizAdapter
 {
     private QuestionRepository _questionRepository;
     private AnswerRepository _answerRepository;
-
-
+    
     public QuizAdapter(QuestionRepository questionRepository, AnswerRepository answerRepository)
     {
         _questionRepository = questionRepository;
@@ -83,6 +82,17 @@ public class QuizAdapter
         {
             Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
             _answerRepository.Put(responseAnswer);
+        }
+    }
+    public void Delete(QuizModel quiz)
+    {
+        Question question = new Question(quiz.Question, quiz.Category);
+        _questionRepository.Delete(question);
+        
+        foreach (Answer answer in quiz.Answers)
+        {
+            Answer responseAnswer = new Answer(answer.AnswerText, answer.QuestionId, answer.IsCorrectAnswer);
+            _answerRepository.Delete(responseAnswer);
         }
     }
     

@@ -8,8 +8,6 @@ namespace Quiz_API.Adapters;
 {
     private TriviaRepository _triviaRepository;
 
-    private TriviaModel triviaModel;
-    private QuizModel? quizmodel;
     public TriviaAdapter()
     {
         _triviaRepository = new TriviaRepository();

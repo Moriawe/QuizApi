@@ -5,7 +5,7 @@ using Quiz_API.Repositories;
 namespace Quiz_API.Adapters;
 
 // Skall pussla ihop Answer och Question modellerna
-public class QuizAdapter
+public class QuizAdapter : IQuizAdapter
 {
     private IQuestionRepository _questionRepository;
     private IAnswerRepository _answerRepository;

@@ -8,9 +8,9 @@ namespace Quiz_API.Services;
 public class QuizService
 {
 
-    private QuizAdapter _quizAdapter;
+    private IQuizAdapter _quizAdapter;
     private TriviaAdapter _triviaAdapter;
-    public QuizService(QuizAdapter quizAdapter, TriviaAdapter triviaAdapter)
+    public QuizService(IQuizAdapter quizAdapter, TriviaAdapter triviaAdapter)
     {
         _quizAdapter = quizAdapter;
         _triviaAdapter = triviaAdapter;

@@ -32,7 +32,6 @@ public class QuizService
         QuizModel DbQuiz = _quizAdapter.GetOneRandomQuiz();
         return (DbQuiz);
     }
-
     
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
     //public QuizModel GetTriviaQuiz()
@@ -40,19 +39,13 @@ public class QuizService
     //    return (quizModel);
     //}
     
-    // Kolla om användaren svarat rätt
     public bool isAnswerCorrect(Answer answer)
     {
-        
-        //using (var context = new QuizDatabaseContext())
-        //{
-            if (answer.IsCorrectAnswer)
-            {
-                return true;
-            }
-            return false;
-        //}
-       
+        if (answer.IsCorrectAnswer)
+        {
+            return true;
+        }
+        return false;
     }
     
     public bool checkIfQuizExistsinDb(Guid id)
@@ -60,12 +53,15 @@ public class QuizService
         return _quizAdapter.DoesQuizExist(id);
     }
     
-    // Lägg till quizzen i databasen
     public void AddQuizToDatabase(QuizModel quiz)
     {
         _quizAdapter.Post(quiz);
     }
 
+    public void UpdateQuizInDatabase(QuizModel quiz)
+    {
+        _quizAdapter.Put(quiz);
+    }
     public void DeleteQuizFromDatabase(QuizModel quiz)
     {
         _quizAdapter.Delete(quiz);

@@ -21,7 +21,7 @@ public class QuizService
     //}
 
     // Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
-    public QuizModel GetDBQuiz(Guid id)
+    public QuizModel GetDbQuiz(Guid id)
     {
         QuizModel DbQuiz = _quizAdapter.GetQuiz(id);
         return (DbQuiz);
@@ -55,15 +55,14 @@ public class QuizService
        
     }
     
-    //// Kolla om quizzen redan finns i databasen
-    //public checkIfQuizExists()
-    //{
-        
-    //}
+    public bool checkIfQuizExistsinDb(Guid id)
+    {
+        return _quizAdapter.DoesQuizExist(id);
+    }
     
-    //// Lägg till quizzen i databasen
-    //public AddQuizToDatabase()
-    //{
-        
-    //}
+    // Lägg till quizzen i databasen
+    public void AddQuizToDatabase(QuizModel quiz)
+    {
+        _quizAdapter.Post(quiz);
+    }
 }

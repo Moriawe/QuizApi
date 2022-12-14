@@ -24,7 +24,7 @@ public class QuizAdapter
         Question question = _questionRepository.Get(id);
         List<Answer> listOfAnswers = _answerRepository.GetAnswers(id);
 
-        QuizModel responseQuiz = new QuizModel(question.Category, listOfAnswers, question.Text);
+        QuizModel responseQuiz = new QuizModel(question.Category, question.TriviaId, listOfAnswers, question.Text);
 
         return responseQuiz;
     }
@@ -39,7 +39,7 @@ public class QuizAdapter
         
         List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);
 
-        QuizModel responseQuiz = new QuizModel(chosenQuestion.Category, Answers, chosenQuestion.Text);
+        QuizModel responseQuiz = new QuizModel(chosenQuestion.Category, chosenQuestion.TriviaId, Answers, chosenQuestion.Text);
         return responseQuiz;
     }
 
@@ -56,7 +56,7 @@ public class QuizAdapter
 
     public void Post(QuizModel quiz)
     {
-        Question question = new Question(quiz.Question, quiz.Category);
+        Question question = new Question(quiz.Question, quiz.TriviaId, quiz.Category);
         _questionRepository.Post(question);
         
         foreach (Answer answer in quiz.Answers)
@@ -68,7 +68,7 @@ public class QuizAdapter
 
     public void Put(QuizModel quiz)
     {
-        Question question = new Question(quiz.Question, quiz.Category);
+        Question question = new Question(quiz.Question, quiz.TriviaId, quiz.Category);
         _questionRepository.Put(question);
         
         foreach (Answer answer in quiz.Answers)
@@ -79,7 +79,7 @@ public class QuizAdapter
     }
     public void Delete(QuizModel quiz)
     {
-        Question question = new Question(quiz.Question, quiz.Category);
+        Question question = new Question(quiz.Question, quiz.TriviaId, quiz.Category);
         _questionRepository.Delete(question);
         
         foreach (Answer answer in quiz.Answers)

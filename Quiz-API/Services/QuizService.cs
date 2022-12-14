@@ -65,4 +65,9 @@ public class QuizService
     {
         _quizAdapter.Post(quiz);
     }
+
+    public void DeleteQuizFromDatabase(QuizModel quiz)
+    {
+        _quizAdapter.Delete(quiz);
+    }
 }

@@ -7,10 +7,10 @@ namespace Quiz_API.Adapters;
 // Skall pussla ihop Answer och Question modellerna
 public class QuizAdapter
 {
-    private QuestionRepository _questionRepository;
+    private IQuestionRepository _questionRepository;
     private AnswerRepository _answerRepository;
     
-    public QuizAdapter(QuestionRepository questionRepository, AnswerRepository answerRepository)
+    public QuizAdapter(IQuestionRepository questionRepository, AnswerRepository answerRepository)
     {
         _questionRepository = questionRepository;
         _answerRepository = answerRepository;

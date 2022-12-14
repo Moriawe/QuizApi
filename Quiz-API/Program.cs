@@ -1,4 +1,5 @@
-﻿using Quiz_API.Adapters;
+﻿using Quiz_API;
+using Quiz_API.Adapters;
 using Quiz_API.Persistance;
 using Quiz_API.Repositories;
 using Quiz_API.Services;
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 // Later: <Interface, ImplementingClass>
-builder.Services.AddScoped<QuizDatabaseContext, QuizDatabaseContext>();
+builder.Services.AddScoped<IQuizDatabaseContext, QuizDatabaseContext>();
 builder.Services.AddScoped<QuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<QuestionAdapter, QuestionAdapter>();
 builder.Services.AddScoped<QuestionService, QuestionService>();

@@ -4,7 +4,7 @@ using Quiz_API.Persistance;
 
 namespace Quiz_API
 {
-    public class AnswerRepository
+    public class AnswerRepository : IAnswerRepository
     {
         private IQuizDatabaseContext _context;
 

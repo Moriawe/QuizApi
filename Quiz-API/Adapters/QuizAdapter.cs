@@ -5,12 +5,12 @@ using Quiz_API.Repositories;
 namespace Quiz_API.Adapters;
 
 // Skall pussla ihop Answer och Question modellerna
-public class QuizAdapter
+public class QuizAdapter : IQuizAdapter
 {
-    private QuestionRepository _questionRepository;
-    private AnswerRepository _answerRepository;
+    private IQuestionRepository _questionRepository;
+    private IAnswerRepository _answerRepository;
     
-    public QuizAdapter(QuestionRepository questionRepository, AnswerRepository answerRepository)
+    public QuizAdapter(IQuestionRepository questionRepository, IAnswerRepository answerRepository)
     {
         _questionRepository = questionRepository;
         _answerRepository = answerRepository;
@@ -33,7 +33,7 @@ public class QuizAdapter
     {
         List<Question> Questions = _questionRepository.Get();
         var random = new Random();
-        int index = random.Next(Questions.Count);
+        int index = random.Next(Questions.Count)-1;
         var chosenQuestion = Questions[index];
 
         List<Answer> Answers = _answerRepository.GetAnswers(chosenQuestion.Id);

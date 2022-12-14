@@ -7,6 +7,7 @@ namespace Quiz_API.Services;
 // Skall bli en stor mastodont fil som hanterar all logic i hela applikationen
 public class QuizService
 {
+
     private QuizAdapter _quizAdapter;
     private TriviaAdapter _triviaAdapter;
     public QuizService(QuizAdapter quizAdapter, TriviaAdapter triviaAdapter)
@@ -55,9 +56,10 @@ public class QuizService
         return _quizAdapter.DoesQuizExist(id);
     }
     
-    public void AddQuizToDatabase(QuizModel quiz)
+    public QuizModel AddQuizToDatabase(QuizModel quiz)
     {
         _quizAdapter.Post(quiz);
+        return quiz;
     }
 
     public void UpdateQuizInDatabase(QuizModel quiz)

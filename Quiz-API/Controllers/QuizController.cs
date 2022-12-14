@@ -33,7 +33,14 @@ namespace Quiz_API.Controllers;
         {
             return Ok(_quizService.GetTriviaQuiz());
         }
-
+        
+        // POST api/values
+        [HttpPost]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<QuizModel>))]
+        public IActionResult Post([FromBody] QuizModel quizModel)
+        {
+            return Ok(_quizService.AddQuizToDatabase(quizModel));
+        }
      
         // // GET api/values/5
         // [HttpGet("{limit}")]

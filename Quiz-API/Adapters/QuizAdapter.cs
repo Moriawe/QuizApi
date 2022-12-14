@@ -7,26 +7,21 @@ namespace Quiz_API.Adapters;
 // Skall pussla ihop Answer och Question modellerna
 public class QuizAdapter
 {
-    private QuizDatabaseContext _context;
-
     private QuestionRepository _questionRepository;
     private AnswerRepository _answerRepository;
-
-
+    
     public QuizAdapter(QuestionRepository questionRepository)
     {
-        _context = new QuizDatabaseContext();
-        //_questionRepository = new QuestionRepository();
+        _questionRepository = new QuestionRepository();
         _answerRepository = new AnswerRepository();
     }
     
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID
     public QuizModel GetQuiz(Guid id)
     {
+        Question question = _questionRepository.Get(id);
+        List<Answer> listOfAnswers = _answerRepository.GetAnswers(id);
 
-        Question question = _context.Questions.Where(x => x.Id == id).FirstOrDefault();
-        List<Answer> listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
-        
         QuizModel responseQuiz = new QuizModel(question.Category, listOfAnswers, question.Text);
 
         return responseQuiz;
@@ -55,8 +50,7 @@ public class QuizAdapter
     // Finns quizzen i vår databas?
     public bool DoesQuizExist(Guid id)
     {
-        if (_context.Questions.Any(x => x.Id == id))
-            //(Array.Exists(_context.Questions, Question => Question.Id == id))
+        if (_questionRepository.Get().Any(x => x.Id == id))
         {
             return true;
         }

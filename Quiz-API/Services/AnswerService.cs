@@ -6,72 +6,56 @@ namespace Quiz_API.Services;
 
 public class AnswerService
 {
+    private IQuizDatabaseContext _context;
 
-    public AnswerService()
+    public AnswerService(IQuizDatabaseContext context)
     {
-        
+        _context = context;
     }
+
 
     // Vill man någonsin ha ALLA svaren? 
     public List<Answer> GetAllAnswers()
     {
-        using (var context = new QuizDatabaseContext())
-        {
-            return (context.Answers.ToList());
-        }
+            return _context.Answers.ToList();
     }
     
     // Begär en string ID just nu, kan behöva ändras till Guid.
     public List<Answer> GetAnswers(Guid id)
     {
         List<Answer> listOfAnswers;
-        using (var context = new QuizDatabaseContext())
-        {
-            listOfAnswers = context.Answers.Where(answer => answer.QuestionId == id).ToList();
-        }
-
+            listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
         return listOfAnswers;
     }
     
     // Skall denna returnera ALLA answers till den frågan eller bara den man postade?
     public Answer PostAnswer(Answer answer)
     {
-        using (var context = new QuizDatabaseContext())
-        {
-            context.Answers.Add(answer);
-        }
-
+            _context.Answers.Add(answer);
         return (answer);
     }
 
     public bool PutAnswer(Answer answer)
     {
-        using (var context = new QuizDatabaseContext())
-        {
-            var foundAnswer = context.Answers.FirstOrDefault(x => x.Id == answer.Id);
+            var foundAnswer = _context.Answers.FirstOrDefault(x => x.Id == answer.Id);
             if (foundAnswer == null)
             {
                 return false;
             }
-            context.Answers.Remove(foundAnswer);
-            context.Answers.Add(answer);
+            _context.Answers.Remove(foundAnswer);
+            _context.Answers.Add(answer);
             return true;
-        }
-        
     }
 
     public bool DeleteAnswer(Guid id)
     {
-        using (var context = new QuizDatabaseContext())
-        {
-            var foundAnswer = context.Answers.FirstOrDefault(x => x.Id == id);
+            var foundAnswer = _context.Answers.FirstOrDefault(x => x.Id == id);
             if (foundAnswer == null)
             {
                 return false;
             }
-            context.Answers.Remove(foundAnswer);
+            _context.Answers.Remove(foundAnswer);
             return true;
-        }
     }
     
 }

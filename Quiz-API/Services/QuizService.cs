@@ -44,14 +44,14 @@ public class QuizService
     public bool isAnswerCorrect(Answer answer)
     {
         
-        using (var context = new QuizDatabaseContext())
-        {
+        //using (var context = new QuizDatabaseContext())
+        //{
             if (answer.IsCorrectAnswer)
             {
                 return true;
             }
             return false;
-        }
+        //}
        
     }
     

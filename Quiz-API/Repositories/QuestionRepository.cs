@@ -7,10 +7,10 @@ namespace Quiz_API.Repositories
 {
     public class QuestionRepository
     {
-        private QuizDatabaseContext _context;
+        private IQuizDatabaseContext _context;
 
 
-        public QuestionRepository(QuizDatabaseContext context)
+        public QuestionRepository(IQuizDatabaseContext context)
         {
             _context = context;
         }

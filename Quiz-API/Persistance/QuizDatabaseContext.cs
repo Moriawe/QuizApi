@@ -7,7 +7,7 @@ using Quiz_API.Models;
 namespace Quiz_API.Persistance
 {
 
-    public class QuizDatabaseContext : DbContext
+    public class QuizDatabaseContext : DbContext, IQuizDatabaseContext
     {
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }

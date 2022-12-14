@@ -7,17 +7,17 @@ namespace Quiz_API.Adapters;
 // Skall pussla ihop Answer och Question modellerna
 public class QuizAdapter
 {
-    private QuizDatabaseContext _context;
+    private IQuizDatabaseContext _context;
 
     private QuestionRepository _questionRepository;
     private AnswerRepository _answerRepository;
 
 
-    public QuizAdapter(QuestionRepository questionRepository)
+    public QuizAdapter(QuestionRepository questionRepository, AnswerRepository answerRepository, IQuizDatabaseContext context)
     {
-        _context = new QuizDatabaseContext();
+        _context = context;
         //_questionRepository = new QuestionRepository();
-        _answerRepository = new AnswerRepository();
+        _answerRepository = answerRepository;
     }
     
     // Skall ta emot ett ID och skicka tillbaka en quizmodel med rätt ID

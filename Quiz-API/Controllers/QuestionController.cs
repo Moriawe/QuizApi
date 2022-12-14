@@ -38,6 +38,14 @@ namespace Quiz_API.Controllers
             return Ok(_service.Get());
         }
 
+        [HttpGet("kalle")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
+        public IActionResult GetMore()
+        {
+            //Service:
+            return Ok(_service.Get());
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]

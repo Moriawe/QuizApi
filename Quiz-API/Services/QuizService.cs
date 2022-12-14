@@ -8,9 +8,11 @@ namespace Quiz_API.Services;
 public class QuizService
 {
     private QuizAdapter _quizAdapter;
-    public QuizService(QuizAdapter quizAdapter)
+    private TriviaAdapter _triviaAdapter;
+    public QuizService(QuizAdapter quizAdapter, TriviaAdapter triviaAdapter)
     {
         _quizAdapter = quizAdapter;
+        _triviaAdapter = triviaAdapter;
     }
     
     //// Slumpa vilken väg den skall hämta en quiz
@@ -34,10 +36,10 @@ public class QuizService
     }
     
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
-    //public QuizModel GetTriviaQuiz()
-    //{
-    //    return (quizModel);
-    //}
+    public async Task<QuizModel> GetTriviaQuiz()
+    {
+        return (await _triviaAdapter.GetOneTriviaQuiz());
+    }
     
     public bool isAnswerCorrect(Answer answer)
     {

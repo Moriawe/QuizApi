@@ -4,7 +4,7 @@ using Quiz_API.Repositories;
 namespace Quiz_API.Adapters;
 
 // Skall hantera kommunikationen med Trivia repot.
-/*public class TriviaAdapter
+public class TriviaAdapter
 {
     private TriviaRepository _triviaRepository;
 
@@ -17,21 +17,21 @@ namespace Quiz_API.Adapters;
     {
         var response = await _triviaRepository.GetTriviaQuiz();
         Console.WriteLine(response);
-        QuizModel responseQuiz;
+        QuizModel responseQuiz = null;
         
          foreach (TriviaModel quiz in response)
          {  
-             List<Answer> Answers = new List<Answer>();
-             Answers.Add(quiz.CorrectAnswer, quiz.Id, true);
+             List<Answer> answers = new List<Answer>();
+             responseQuiz = new QuizModel(quiz.Category, quiz.Id, answers, quiz.Question);
+             
+             responseQuiz.Answers.Add(new Answer(quiz.CorrectAnswer, responseQuiz.Id, true));
              
              foreach (string answer in quiz.IncorrectAnswers)
              {
-                 Answers.Add(new Answer(answer, quiz.Id, false));
+                 responseQuiz.Answers.Add(new Answer(answer, responseQuiz.Id, false));
              }
-
-             responseQuiz = new QuizModel(quiz.Category, Answers, quiz.Question);
          }
 
          return responseQuiz;
     }
-}*/
+}

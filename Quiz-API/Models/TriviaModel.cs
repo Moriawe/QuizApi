@@ -15,19 +15,18 @@ public class TriviaModel
     public List<object> Regions { get; set; }
     public bool IsNiche { get; set; }
     
-    /*
-    public TriviaModel(string category, string id, string correctAnswer, string[] incorrectAnswer, string question, string difficulty)
+    
+    public TriviaModel(string category, string id, string correctAnswer, List<string> incorrectAnswers, string question, string difficulty)
      
     {
         Category = category;
         Id = id;
         CorrectAnswer = correctAnswer;
-        IncorrectAnswer = incorrectAnswer;
+        IncorrectAnswers = incorrectAnswers;
         Question = question;
         Difficulty = difficulty;
     }
-    */
-    
+
 }
 /*
 public class MockQuestions

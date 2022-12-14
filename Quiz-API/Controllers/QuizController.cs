@@ -25,6 +25,14 @@ namespace Quiz_API.Controllers;
         {
             return Ok(_quizService.GetOneDbQuiz());
         }
+        
+        // GET: api/values
+        [HttpGet]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
+        public IActionResult GetT()
+        {
+            return Ok(_quizService.GetTriviaQuiz());
+        }
 
      
         // // GET api/values/5

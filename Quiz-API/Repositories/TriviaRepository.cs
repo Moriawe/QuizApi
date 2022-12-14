@@ -19,9 +19,9 @@ public class TriviaRepository
 
             var stream =  await response.Content.ReadAsStreamAsync();
 
-            var TriviaQuiz = await JsonSerializer.DeserializeAsync<List<TriviaModel>>(stream);
+            var triviaQuiz = await JsonSerializer.DeserializeAsync<List<TriviaModel>>(stream);
                 
-            return TriviaQuiz;
+            return triviaQuiz;
 
         }
         catch (Exception ex)

@@ -53,9 +53,10 @@ public class QuizService
         return _quizAdapter.DoesQuizExist(id);
     }
     
-    public void AddQuizToDatabase(QuizModel quiz)
+    public QuizModel AddQuizToDatabase(QuizModel quiz)
     {
         _quizAdapter.Post(quiz);
+        return quiz;
     }
 
     public void UpdateQuizInDatabase(QuizModel quiz)

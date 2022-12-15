@@ -15,8 +15,8 @@ public class TriviaAdapter
 
     public async Task<QuizModel> GetOneTriviaQuiz()
     {
-        var response = await _triviaRepository.GetTriviaQuiz();
-        Console.WriteLine(response);
+        var response = await _triviaRepository.GetTriviaAsync();
+        
         QuizModel responseQuiz = null;
         
          foreach (TriviaModel quiz in response)

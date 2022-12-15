@@ -29,9 +29,9 @@ namespace Quiz_API.Controllers;
         // GET: api/values
         [HttpGet("Trivia")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
-        public IActionResult GetTrivia()
+        public async Task<IActionResult> GetTrivia()
         {
-            return Ok(_quizService.GetTriviaQuiz());
+            return Ok(await _quizService.GetTriviaQuiz());
         }
         
         // POST api/values

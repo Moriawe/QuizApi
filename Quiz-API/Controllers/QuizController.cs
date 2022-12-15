@@ -8,10 +8,11 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace Quiz_API.Controllers;
 
-    [Route("api/[controller]")]
-    [Produces(MediaTypeNames.Application.Json)]
-    public class QuizController : Controller
-    {
+[ApiController]
+[Route("api/[controller]")]
+[Produces(MediaTypeNames.Application.Json)]
+public class QuizController : ControllerBase
+{
         private QuizService _quizService;
         private TriviaRepository _triviaRepository = new();
         
@@ -62,4 +63,4 @@ namespace Quiz_API.Controllers;
         //    return Ok(_quizService);
         // }
 
-    }
+}

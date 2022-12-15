@@ -7,11 +7,13 @@ namespace Quiz_API.Services;
 // Skall bli en stor mastodont fil som hanterar all logic i hela applikationen
 public class QuizService
 {
-    private IQuizAdapter _quizAdapter;
 
-    public QuizService(IQuizAdapter quizAdapter)
+    private IQuizAdapter _quizAdapter;
+    private TriviaAdapter _triviaAdapter;
+    public QuizService(IQuizAdapter quizAdapter, TriviaAdapter triviaAdapter)
     {
         _quizAdapter = quizAdapter;
+        _triviaAdapter = triviaAdapter;
     }
     
     //// Slumpa vilken väg den skall hämta en quiz
@@ -35,10 +37,10 @@ public class QuizService
     }
     
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
-    //public QuizModel GetTriviaQuiz()
-    //{
-    //    return (quizModel);
-    //}
+    public async Task<QuizModel> GetTriviaQuiz()
+    {
+        return (await _triviaAdapter.GetOneTriviaQuiz());
+    }
     
     public bool isAnswerCorrect(Answer answer)
     {

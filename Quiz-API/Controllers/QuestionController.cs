@@ -14,9 +14,10 @@ using Quiz_API.Services;
 
 namespace Quiz_API.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
     [Produces(MediaTypeNames.Application.Json)]
-    public class QuestionController : Controller
+    public class QuestionController : ControllerBase
     {
         private QuestionService _service; // Should recieve as argument in constructor.
 

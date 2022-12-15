@@ -1,36 +1,22 @@
 ﻿namespace Quiz_API.Models;
+using System.Text.Json.Serialization;
 
 // Datastrukturen som tas emot från Trivia API:et
-public class TriviaModel
-{
-    
-    public string Category { get; set; }
-    public string Id { get; set; }
-    public string CorrectAnswer { get; set; }
-    public List<string> IncorrectAnswers { get; set; }
-    public string Question { get; set; }
-    public List<string> Tags { get; set; }
-    public string Type { get; set; }
-    public string Difficulty { get; set; }
-    public List<object> Regions { get; set; }
-    public bool IsNiche { get; set; }
-    
-    /*
-    public TriviaModel(string category, string id, string correctAnswer, string[] incorrectAnswer, string question, string difficulty)
-     
-    {
-        Category = category;
-        Id = id;
-        CorrectAnswer = correctAnswer;
-        IncorrectAnswer = incorrectAnswer;
-        Question = question;
-        Difficulty = difficulty;
-    }
-    */
-    
-}
+public record class TriviaModel(
+    [property: JsonPropertyName("category")] string Category,
+    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("correctAnswer")] string CorrectAnswer,
+    [property: JsonPropertyName("incorrectAnswers")] List<object> IncorrectAnswers,
+    [property: JsonPropertyName("question")] string Question,
+    [property: JsonPropertyName("tags")] List<object> Tags,
+    [property: JsonPropertyName("type")] string Type,
+    [property: JsonPropertyName("difficulty")] string Difficulty,
+    [property: JsonPropertyName("regions")] List<object> Regions,
+    [property: JsonPropertyName("isNiche")] bool IsNiche
+    );
+
 /*
-public class MockQuestions
+
 {
     private TriviaQuestionItem[] Questions = new TriviaQuestionItem[5];
     

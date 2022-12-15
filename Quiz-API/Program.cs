@@ -19,8 +19,7 @@ builder.Services.AddScoped<QuizService, QuizService>();
 
 builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
 builder.Services.AddScoped<AnswerService, AnswerService>(); // Maybe skip
-
-
+builder.Services.AddScoped<TriviaAdapter, TriviaAdapter>();
 
 
 

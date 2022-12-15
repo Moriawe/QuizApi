@@ -12,15 +12,17 @@ public class Answer
     public Guid QuestionId { get; set; }
     //public Question Question { get; set; }
 
-
-    //Jennie: Jag behövde tillfälligt bortkommentera nedanstående konstruktor, för att få projektet att bygga. Är osäker på varför.
-
-    //public Answer(string answer, Guid questionId, bool isCorrectAnswer)
-    //{
-    //    //Id = Guid.NewGuid();
-    //    AnswerText = answer;
-    //    QuestionId = questionId;
-    //    IsCorrectAnswer = isCorrectAnswer;
-    //}
+    public Answer()
+    {
+        Id = Guid.NewGuid();
+    }
+    
+    public Answer(string answer, Guid questionId, bool isCorrectAnswer)
+    {
+        Id = Guid.NewGuid();
+        AnswerText = answer;
+        QuestionId = questionId;
+        IsCorrectAnswer = isCorrectAnswer;
+    }
 
 }

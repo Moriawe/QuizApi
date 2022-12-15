@@ -6,7 +6,7 @@ public record class TriviaModel(
     [property: JsonPropertyName("category")] string Category,
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("correctAnswer")] string CorrectAnswer,
-    [property: JsonPropertyName("incorrectAnswers")] List<object> IncorrectAnswers,
+    [property: JsonPropertyName("incorrectAnswers")] List<string> IncorrectAnswers,
     [property: JsonPropertyName("question")] string Question,
     [property: JsonPropertyName("tags")] List<object> Tags,
     [property: JsonPropertyName("type")] string Type,

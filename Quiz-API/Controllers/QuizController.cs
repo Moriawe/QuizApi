@@ -2,6 +2,7 @@
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
+using Quiz_API.Repositories;
 using Quiz_API.Services;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -12,6 +13,7 @@ namespace Quiz_API.Controllers;
     public class QuizController : Controller
     {
         private QuizService _quizService;
+        private TriviaRepository _triviaRepository = new();
         
         public QuizController(QuizService quizService)
         {
@@ -25,6 +27,15 @@ namespace Quiz_API.Controllers;
         {
             return Ok(_quizService.GetOneDbQuiz());
         } 
+        
+        // GET: api/values
+        [HttpGet("TriviaRepo")]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(TriviaModel))]
+        public async Task<IActionResult> GetTriviaModel()
+        {
+            return Ok(await _triviaRepository.GetTriviaAsync());
+            //return Ok(await _quizService.GetTriviaQuiz());
+        }
         
         // GET: api/values
         [HttpGet("Trivia")]

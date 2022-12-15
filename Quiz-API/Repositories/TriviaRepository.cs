@@ -6,41 +6,21 @@ namespace Quiz_API.Repositories;
 // Skall hämta information ifrån Trivia API:et
 public class TriviaRepository
 {
-    HttpClient client = new();
-    List<TriviaModel> TriviaQuizzes = new();
+    HttpClient _client = new();
     
     public async Task<List<TriviaModel>> GetTriviaAsync()
     {
-        HttpClient client = new();
-        await using Stream stream =
-            await client.GetStreamAsync("https://the-trivia-api.com/api/questions?limit=1");
-        TriviaQuizzes = await JsonSerializer.DeserializeAsync<List<TriviaModel>>(stream);
-
-        return TriviaQuizzes;
+        var uri = $"https://the-trivia-api.com/api/questions?limit=1";
+        List<TriviaModel> triviaQuizzes = new();
+        
+        // Skillnad på stream, get StreamAsync och just GetAsync
+        //await using Stream stream = await _client.GetStreamAsync(uri);
+        var response = await _client.GetAsync(uri);
+        var stream = await response.Content.ReadAsStreamAsync();
+        
+        triviaQuizzes = await JsonSerializer.DeserializeAsync<List<TriviaModel>>(stream);
+        Console.WriteLine(triviaQuizzes);
+        return triviaQuizzes;
     }
-    
-    /*
-    public async Task<List<TriviaModel>> GetTriviaQuiz()
-    {
-        try
-        {
-            var uri = $"https://the-trivia-api.com/api/questions?limit=1";
-
-            using var client = new HttpClient();
-
-            var response = await client.GetAsync(uri);
-
-            var stream =  await response.Content.ReadAsStreamAsync();
-
-            var triviaQuiz = await JsonSerializer.DeserializeAsync<List<TriviaModel>>(stream);
-                
-            return triviaQuiz;
-
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
-    } */
     
 }

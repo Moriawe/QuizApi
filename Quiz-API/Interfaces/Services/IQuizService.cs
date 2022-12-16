@@ -6,11 +6,6 @@ namespace Quiz_API
 {
 	public interface IQuizService
 	{
-		public IQuizService()
-		{
-		}
-
-
         public QuizModel GetDbQuiz(Guid id);
         public QuizModel GetOneDbQuiz();
         public Task<QuizModel> GetTriviaQuiz();

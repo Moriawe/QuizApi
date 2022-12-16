@@ -15,7 +15,7 @@ builder.Services.AddScoped<QuestionAdapter, QuestionAdapter>(); // Maybe skip
 builder.Services.AddScoped<QuestionService, QuestionService>(); // Maybe skip
 
 builder.Services.AddScoped<IQuizAdapter, QuizAdapter>();
-builder.Services.AddScoped<QuizService, QuizService>();
+builder.Services.AddScoped<IQuizService, QuizService>();
 
 builder.Services.AddScoped<IAnswerRepository, AnswerRepository>();
 builder.Services.AddScoped<AnswerService, AnswerService>(); // Maybe skip

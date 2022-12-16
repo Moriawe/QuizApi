@@ -13,10 +13,10 @@ namespace Quiz_API.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class QuizController : ControllerBase
 {
-        private QuizService _quizService;
+        private IQuizService _quizService;
         private TriviaRepository _triviaRepository = new();
         
-        public QuizController(QuizService quizService)
+        public QuizController(IQuizService quizService)
         {
         _quizService = quizService;
         }

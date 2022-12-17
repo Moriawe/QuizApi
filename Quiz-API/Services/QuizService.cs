@@ -78,8 +78,10 @@ public class QuizService : IQuizService
 
     public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer)
     {
-        var question = _quizAdapter.GetAllQuestions().Where(x => x.Id == quizAnswer.QuestionId).FirstOrDefault();
-        var answer = _quizAdapter.Get
+        var question = _quizAdapter.GetQuestionById(quizAnswer.QuestionId);
+        var answer = _quizAdapter.GetAnswerById(quizAnswer.AnswerId);
+
+        return new QuizSolution(question, answer);
     }
 
 

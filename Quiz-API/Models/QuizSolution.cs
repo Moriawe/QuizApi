@@ -11,7 +11,15 @@ namespace Quiz_API.Models
 
         public QuizSolution()
 		{
-		}
-	}
+			Id = Guid.NewGuid();
+        }
+
+        public QuizSolution(Question question, Answer answer)
+        {
+            Id = Guid.NewGuid();
+            Question = question;
+            Answer = answer;
+        }
+    }
 }
 

@@ -10,7 +10,14 @@ namespace Quiz_API
         //public QuizModel GetQuiz(Guid id);
 
         public Task<QuizModel?> GetQuiz();
-        public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer);
+
+        public Question? GetQuestionById(Guid Id);
+        public Answer? GetAnswerById(Guid Id);
+
+
+
+
+        public List<Question> GetAllQuestions();
 
 
         public QuizModel? GetRandomQuizFromDb();

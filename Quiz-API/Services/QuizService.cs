@@ -75,7 +75,17 @@ public class QuizService : IQuizService
     {
         return (await _triviaAdapter.GetOneTriviaQuiz());
     }
-    
+
+    public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer)
+    {
+        var question = _quizAdapter.GetQuestionById(quizAnswer.QuestionId);
+        var answer = _quizAdapter.GetAnswerById(quizAnswer.AnswerId);
+        var wasAnswerCorrect = answer.IsCorrectAnswer;
+
+        return new QuizSolution(question, answer, wasAnswerCorrect);
+    }
+
+
     public bool isAnswerCorrect(Answer answer)
     {
         if (answer.IsCorrectAnswer)

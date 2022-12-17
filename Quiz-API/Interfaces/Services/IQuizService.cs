@@ -8,6 +8,9 @@ namespace Quiz_API
 	{
         //public QuizModel? GetDbQuiz(Guid id);
         public Task<QuizModel?> GetQuiz();
+        public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer);
+
+
         public QuizModel? GetDbQuiz();
         //public QuizModel GetOneDbQuiz();
         public Task<QuizModel> GetTriviaQuiz();

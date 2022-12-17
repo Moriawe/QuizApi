@@ -44,6 +44,8 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizSolution))]
         public IActionResult PostAnswer(QuizAnswer quizAnswer)
         {
+            //var result = _quizService.EvaluateQuizAnswer(quizAnswer);
+            //Console.WriteLine($"___________ PostAnswer result: {result.Question.Text} wasCorrect: {result.WasAnswerCorrect}");
             return Ok(_quizService.EvaluateQuizAnswer(quizAnswer));
         }
 

@@ -76,11 +76,17 @@ public class QuizService : IQuizService
         return (await _triviaAdapter.GetOneTriviaQuiz());
     }
 
+
     public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer)
     {
         var question = _quizAdapter.GetQuestionById(quizAnswer.QuestionId);
-        var answer = _quizAdapter.GetAnswerById(quizAnswer.AnswerId);
+        Console.WriteLine($"__________ question {question.Text}");
+
+        var answer = quizAnswer.Answer;
         var wasAnswerCorrect = answer.IsCorrectAnswer;
+
+        Console.WriteLine($"__________ wasAnswerCorrect {wasAnswerCorrect}");
+
 
         return new QuizSolution(question, answer, wasAnswerCorrect);
     }

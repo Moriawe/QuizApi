@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
@@ -10,17 +11,26 @@ using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace Quiz_API
+namespace Quiz_API.Controllers
 {
+    [ApiController]
     [Route("api/[controller]")]
-    public class QuizAnswerController : Controller
+    [Produces(MediaTypeNames.Application.Json)]
+    public class QuizAnswerController : ControllerBase
     {
-        // GET: api/values
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        private IQuizService _quizService;
+
+        public QuizAnswerController(IQuizService quizService)
+        {
+            _quizService = quizService;
+        }
+
+        //GET: api/values
+       //[HttpGet]
+       // public IEnumerable<string> Get()
+       // {
+       //     return new string[] { "value1", "value2" };
+       // }
 
         //// GET api/values/5
         //[HttpGet("{id}")]
@@ -34,10 +44,7 @@ namespace Quiz_API
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizSolution))]
         public IActionResult PostAnswer(QuizAnswer quizAnswer)
         {
-            return Ok(_quizService.GetDbQuiz());
-        }
-        public void Post([FromBody]string value)
-        {
+            return Ok(_quizService.EvaluateQuizAnswer(quizAnswer));
         }
 
         // PUT api/values/5

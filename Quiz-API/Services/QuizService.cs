@@ -80,8 +80,9 @@ public class QuizService : IQuizService
     {
         var question = _quizAdapter.GetQuestionById(quizAnswer.QuestionId);
         var answer = _quizAdapter.GetAnswerById(quizAnswer.AnswerId);
+        var wasAnswerCorrect = answer.IsCorrectAnswer;
 
-        return new QuizSolution(question, answer);
+        return new QuizSolution(question, answer, wasAnswerCorrect);
     }
 
 

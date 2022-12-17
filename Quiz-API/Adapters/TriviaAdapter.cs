@@ -34,4 +34,5 @@ public class TriviaAdapter
 
          return responseQuiz;
     }
+
 }

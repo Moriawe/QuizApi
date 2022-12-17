@@ -1,7 +1,7 @@
 ﻿using System;
 using Quiz_API.Models;
 
-namespace Quiz_API.Models;
+namespace Quiz_API.Models
 {
 	public class QuizSolution
 	{

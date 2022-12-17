@@ -31,7 +31,7 @@ namespace Quiz_API
 
         // POST api/values
         [HttpPost]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizAnswer))]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizSolution))]
         public IActionResult PostAnswer(QuizAnswer quizAnswer)
         {
             return Ok(_quizService.GetDbQuiz());

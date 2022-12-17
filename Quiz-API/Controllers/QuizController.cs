@@ -20,13 +20,27 @@ public class QuizController : ControllerBase
         {
         _quizService = quizService;
         }
-        
-        // GET: api/values
-        [HttpGet("Database")]
+
+
+    [HttpGet]
+    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
+    public async Task<IActionResult> GetQuiz()
+    {
+        return Ok(await _quizService.GetQuiz());
+    }
+
+    //[SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
+    //public async Task<IActionResult> GetTrivia()
+    //{
+    //    return Ok(await _quizService.GetTriviaQuiz());
+    //}
+
+    // GET: api/values
+    [HttpGet("Database")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
          public IActionResult GetDatabase()
         {
-            return Ok(_quizService.GetOneDbQuiz());
+            return Ok(_quizService.GetDbQuiz());
         } 
         
         // GET: api/values

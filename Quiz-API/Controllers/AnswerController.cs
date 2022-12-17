@@ -12,11 +12,11 @@ namespace Quiz_API.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class AnswerController : ControllerBase
 {
-    private AnswerService _answerService;
+    private AnswerService _service;
 
-    public AnswerController(AnswerService answerService)
+    public AnswerController(AnswerService service)
     {
-        _answerService = answerService;
+        _service = service;
     }
 
     //TODO Behöver vi hämta alla svar? Känns mer logiskt att hämta ALLA frågor
@@ -25,7 +25,7 @@ public class AnswerController : ControllerBase
     [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
     public IActionResult Get()
     {
-        return Ok(_answerService.GetAllAnswers());
+        return Ok(_service.GetAllAnswers());
     }
 
 
@@ -35,7 +35,7 @@ public class AnswerController : ControllerBase
     [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Answer))]
     public IActionResult Get(Guid id)
     {
-        return Ok(_answerService.GetAnswers(id));
+        return Ok(_service.GetAnswerByID(id));
     }
 
     // ANVÄNDA ASYNC OCH AWAIT?
@@ -54,10 +54,10 @@ public class AnswerController : ControllerBase
 
     // POST api/values
     [HttpPost]
-    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
-    public IActionResult Post([FromBody] Answer answer)
+    [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(Answer))]
+    public IActionResult Post(Answer answer) // Probably skip [FromBody]
     {
-        return Ok(_answerService.PostAnswer(answer));
+        return Ok(_service.PostAnswer(answer));
     }
 
     // PUT api/values/5
@@ -71,7 +71,7 @@ public class AnswerController : ControllerBase
             return BadRequest("Invalid id");
         }
 
-        var isAnswerUpdated = _answerService.PutAnswer(answer);
+        var isAnswerUpdated = _service.PutAnswer(answer);
         if (isAnswerUpdated)
         {
             return Ok();
@@ -86,7 +86,7 @@ public class AnswerController : ControllerBase
     [SwaggerResponse((int)HttpStatusCode.NoContent)]
     public IActionResult Delete(Guid id)
     {
-        var isAnswerDeleted = _answerService.DeleteAnswer(id);
+        var isAnswerDeleted = _service.DeleteAnswer(id);
         if (isAnswerDeleted)
         {
             return Ok();

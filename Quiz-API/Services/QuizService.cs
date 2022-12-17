@@ -24,18 +24,52 @@ public class QuizService : IQuizService
     //}
 
     // Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
-    public QuizModel GetDbQuiz(Guid id)
+    //public QuizModel GetDbQuiz(Guid id)
+    //{
+    //    QuizModel DbQuiz = _quizAdapter.GetQuiz(id);
+    //    return (DbQuiz);
+    //}
+
+    public QuizModel? GetDbQuiz()
     {
-        QuizModel DbQuiz = _quizAdapter.GetQuiz(id);
-        return (DbQuiz);
+        QuizModel? DbQuiz = _quizAdapter.GetRandomQuizFromDb();
+        return DbQuiz;
     }
 
-    public QuizModel GetOneDbQuiz()
+    //public async Task<QuizModel> GetQuiz()
+    //{
+    //    return (await _triviaAdapter.GetOneTriviaQuiz());
+    //}
+
+    public async Task<QuizModel?> GetQuiz()
     {
-        QuizModel DbQuiz = _quizAdapter.GetOneRandomQuiz();
-        return (DbQuiz);
+        //var triviaQuiz = GetQuizFromTrivia();
+        //var dbQuiz = _quizAdapter.GetRandomQuizFromDb();
+        var random = new Random();
+        int source = random.Next(2); // 2 sources: Trivia and DB.
+        Console.WriteLine($"__________source: {source}");
+
+        //Console.WriteLine($"__________triviaQuiz.GetType: {triviaQuiz.GetType()}");
+
+
+        if (source == 0)
+        {
+            var triviaQuiz = (await _triviaAdapter.GetOneTriviaQuiz());
+            if (!DoesQuizExistinDb(triviaQuiz.Id))
+            {
+                AddQuizToDatabase(triviaQuiz);
+            }
+            return triviaQuiz;
+        }
+        Console.WriteLine($"__________ From Database");
+
+        return _quizAdapter.GetRandomQuizFromDb();
+
+        //return (await _triviaAdapter.GetOneTriviaQuiz());
+
+        //return  dbQuiz;
     }
-    
+
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
     public async Task<QuizModel> GetTriviaQuiz()
     {
@@ -51,7 +85,7 @@ public class QuizService : IQuizService
         return false;
     }
     
-    public bool checkIfQuizExistsinDb(Guid id)
+    public bool DoesQuizExistinDb(Guid id)
     {
         return _quizAdapter.DoesQuizExist(id);
     }

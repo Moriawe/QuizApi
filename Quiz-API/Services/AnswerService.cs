@@ -6,56 +6,55 @@ namespace Quiz_API.Services;
 
 public class AnswerService
 {
-    private IQuizDatabaseContext _context;
+    private AnswerAdapter _adapter;
 
-    public AnswerService(IQuizDatabaseContext context)
+    public AnswerService(AnswerAdapter adapter)
     {
-        _context = context;
+        _adapter = adapter;
     }
 
 
-    // Vill man någonsin ha ALLA svaren? 
     public List<Answer> GetAllAnswers()
     {
-            return _context.Answers.ToList();
+        return _adapter.GetAllAnswers();
     }
-    
+
     // Begär en string ID just nu, kan behöva ändras till Guid.
-    public List<Answer> GetAnswers(Guid id)
+    public List<Answer> GetAnswerByID(Guid id)
     {
         List<Answer> listOfAnswers;
-            listOfAnswers = _context.Answers.Where(answer => answer.QuestionId == id).ToList();
+        listOfAnswers = _adapter.GetAllAnswers().Where(answer => answer.QuestionId == id).ToList();
         return listOfAnswers;
     }
-    
+
     // Skall denna returnera ALLA answers till den frågan eller bara den man postade?
     public Answer PostAnswer(Answer answer)
     {
-            _context.Answers.Add(answer);
+        _adapter.SaveNewAnswer(answer);
         return (answer);
     }
 
     public bool PutAnswer(Answer answer)
     {
-            var foundAnswer = _context.Answers.FirstOrDefault(x => x.Id == answer.Id);
-            if (foundAnswer == null)
-            {
-                return false;
-            }
-            _context.Answers.Remove(foundAnswer);
-            _context.Answers.Add(answer);
-            return true;
+        var foundAnswer = _adapter.GetAllAnswers().Where(x => x.Id == answer.Id).FirstOrDefault();
+        if (foundAnswer == null)
+        {
+            return false;
+        }
+        _adapter.DeleteAnswer(foundAnswer);
+        _adapter.SaveNewAnswer(answer);
+        return true;
     }
 
     public bool DeleteAnswer(Guid id)
     {
-            var foundAnswer = _context.Answers.FirstOrDefault(x => x.Id == id);
-            if (foundAnswer == null)
-            {
-                return false;
-            }
-            _context.Answers.Remove(foundAnswer);
-            return true;
+        var foundAnswer = _adapter.GetAllAnswers().Where(x => x.Id == id).FirstOrDefault();
+        if (foundAnswer == null)
+        {
+            return false;
+        }
+        _adapter.DeleteAnswer(foundAnswer);
+        return true;
     }
-    
+
 }

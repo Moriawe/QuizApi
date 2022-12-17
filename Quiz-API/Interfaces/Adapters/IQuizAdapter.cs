@@ -7,9 +7,13 @@ namespace Quiz_API
     // Add more methods, or remove, according to QuizAdapter
     public interface IQuizAdapter
 	{
-        public QuizModel GetQuiz(Guid id);
+        //public QuizModel GetQuiz(Guid id);
 
-        public QuizModel GetOneRandomQuiz();
+        public Task<QuizModel?> GetQuiz();
+        public QuizModel? GetRandomQuizFromDb();
+        //public QuizModel? GetRandomQuizFromDb();
+
+        //public QuizModel GetOneRandomQuiz();
 
         // Finns quizzen i vår databas? I Service? 
         public bool DoesQuizExist(Guid id);

@@ -1,7 +1,11 @@
 # QuizApi
 School project with C# and ASP.NET core
 
-Instructions:
+Jennie and Kristian
+
+
+
+## Instructions:
 
 Web-API:
 https://enlitenwebapp.azurewebsites.net/api/quiz

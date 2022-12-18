@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
 using Quiz_API.Services;
@@ -26,11 +27,11 @@ namespace Quiz_API.Controllers
         }
 
         //GET: api/values
-       //[HttpGet]
-       // public IEnumerable<string> Get()
-       // {
-       //     return new string[] { "value1", "value2" };
-       // }
+        //[HttpGet]
+        // public IEnumerable<string> Get()
+        // {
+        //     return new string[] { "value1", "value2" };
+        // }
 
         //// GET api/values/5
         //[HttpGet("{id}")]
@@ -40,6 +41,7 @@ namespace Quiz_API.Controllers
         //}
 
         // POST api/values
+        [EnableCors]
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizSolution))]
         public IActionResult PostAnswer(QuizAnswer quizAnswer)

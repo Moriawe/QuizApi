@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Net.Mime;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Quiz_API.Models;
 using Quiz_API.Repositories;
@@ -22,6 +23,7 @@ public class QuizController : ControllerBase
         }
 
 
+    [EnableCors]
     [HttpGet]
     [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
     public async Task<IActionResult> GetQuiz()

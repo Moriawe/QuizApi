@@ -29,7 +29,24 @@ builder.Services.AddScoped<TriviaAdapter, TriviaAdapter>();
 
 
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Policy1",
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:7181")
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod();
+        });
 
+    //options.AddPolicy("AnotherPolicy",
+    //    policy =>
+    //    {
+    //        policy.WithOrigins("http://www.contoso.com")
+    //                            .AllowAnyHeader()
+    //                            .AllowAnyMethod();
+    //    });
+});
 
 
 
@@ -55,6 +72,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors();
 
 app.Run();
 

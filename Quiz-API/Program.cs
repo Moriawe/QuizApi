@@ -29,23 +29,36 @@ builder.Services.AddScoped<TriviaAdapter, TriviaAdapter>();
 
 
 
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("Policy1",
+//        policy =>
+//        {
+//            policy.WithOrigins("https://localhost:7181")
+//                                        .AllowAnyHeader()
+//                                        .AllowAnyMethod();
+//        });
+
+//    //options.AddPolicy("AnotherPolicy",
+//    //    policy =>
+//    //    {
+//    //        policy.WithOrigins("http://www.contoso.com")
+//    //                            .AllowAnyHeader()
+//    //                            .AllowAnyMethod();
+//    //    });
+//});
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("Policy1",
-        policy =>
+    options.AddDefaultPolicy(
+        builder =>
         {
-            policy.WithOrigins("https://localhost:7181")
-                                        .AllowAnyHeader()
-                                        .AllowAnyMethod();
-        });
 
-    //options.AddPolicy("AnotherPolicy",
-    //    policy =>
-    //    {
-    //        policy.WithOrigins("http://www.contoso.com")
-    //                            .AllowAnyHeader()
-    //                            .AllowAnyMethod();
-    //    });
+            //you can configure your custom policy
+            builder.AllowAnyOrigin()
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
 });
 
 

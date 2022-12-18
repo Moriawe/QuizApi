@@ -23,7 +23,7 @@ public class QuizController : ControllerBase
         }
 
 
-    [EnableCors("Policy1")]
+    [EnableCors]
     [HttpGet]
     [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
     public async Task<IActionResult> GetQuiz()

@@ -31,14 +31,5 @@ namespace Quiz_API.Controllers
         {
             return Ok(await _quizService.GetQuiz());
         }
-
-
-        // POST api/values
-        [HttpPost]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<QuizModel>))]
-        public IActionResult Post([FromBody] QuizModel quizModel)
-        {
-            return Ok(_quizService.AddQuizToDatabase(quizModel));
-        }
     }
 }

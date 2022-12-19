@@ -15,20 +15,7 @@ public class QuizService : IQuizService
         _quizAdapter = quizAdapter;
         _triviaAdapter = triviaAdapter;
     }
-    
-    //// Slumpa vilken väg den skall hämta en quiz
-    //public QuizModel GetQuiz()
-    //{
-        
-    //    return (quizModel);
-    //}
 
-    // Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från QuizAdapter
-    //public QuizModel GetDbQuiz(Guid id)
-    //{
-    //    QuizModel DbQuiz = _quizAdapter.GetQuiz(id);
-    //    return (DbQuiz);
-    //}
 
     public QuizModel? GetDbQuiz()
     {
@@ -36,21 +23,11 @@ public class QuizService : IQuizService
         return DbQuiz;
     }
 
-    //public async Task<QuizModel> GetQuiz()
-    //{
-    //    return (await _triviaAdapter.GetOneTriviaQuiz());
-    //}
 
     public async Task<QuizModel?> GetQuiz()
     {
-        //var triviaQuiz = GetQuizFromTrivia();
-        //var dbQuiz = _quizAdapter.GetRandomQuizFromDb();
         var random = new Random();
         int source = random.Next(2); // 2 sources: Trivia and DB.
-        Console.WriteLine($"__________source: {source}");
-
-        //Console.WriteLine($"__________triviaQuiz.GetType: {triviaQuiz.GetType()}");
-
 
         if (source == 0)
         {
@@ -60,24 +37,15 @@ public class QuizService : IQuizService
                 AddQuizToDatabase(triviaQuiz);
             }
             triviaQuiz.Answers = RandomizeAnswers(triviaQuiz.Answers);
+
             return triviaQuiz;
         }
-        Console.WriteLine($"__________ From Database");
-
         var dbQuiz = _quizAdapter.GetRandomQuizFromDb();
-
         dbQuiz.Answers = RandomizeAnswers(dbQuiz.Answers);
 
-
-        Console.WriteLine($"__________ From Database");
-
-
         return dbQuiz;
-
-        //return (await _triviaAdapter.GetOneTriviaQuiz());
-
-        //return  dbQuiz;
     }
+
 
     private List<Answer> RandomizeAnswers(List<Answer> answers)
     {
@@ -86,6 +54,7 @@ public class QuizService : IQuizService
         answers = randomizedAnswers;
         return answers;
     }
+
 
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter
     public async Task<QuizModel> GetTriviaQuiz()
@@ -97,13 +66,8 @@ public class QuizService : IQuizService
     public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer)
     {
         var question = _quizAdapter.GetQuestionById(quizAnswer.QuestionId);
-        Console.WriteLine($"__________ question {question.Text}");
-
         var answer = quizAnswer.Answer;
         var wasAnswerCorrect = answer.IsCorrectAnswer;
-
-        Console.WriteLine($"__________ wasAnswerCorrect {wasAnswerCorrect}");
-
 
         return new QuizSolution(question, answer, wasAnswerCorrect);
     }
@@ -117,17 +81,20 @@ public class QuizService : IQuizService
         }
         return false;
     }
-    
+
+
     public bool DoesQuizExistinDb(Guid id)
     {
         return _quizAdapter.DoesQuizExist(id);
     }
-    
+
+
     public QuizModel AddQuizToDatabase(QuizModel quiz)
     {
         _quizAdapter.Post(quiz);
         return quiz;
     }
+
 
     public void UpdateQuizInDatabase(QuizModel quiz)
     {
@@ -137,4 +104,5 @@ public class QuizService : IQuizService
     {
         _quizAdapter.Delete(quiz);
     }
+
 }

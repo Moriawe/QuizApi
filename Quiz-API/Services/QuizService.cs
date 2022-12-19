@@ -102,6 +102,7 @@ namespace Quiz_API.Services
         {
             _quizAdapter.Put(quiz);
         }
+
         public void DeleteQuizFromDatabase(QuizModel quiz)
         {
             _quizAdapter.Delete(quiz);

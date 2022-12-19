@@ -21,7 +21,7 @@ namespace Quiz_API.Services
 
         public List<Answer> GetAnswerByID(Guid id)
         {
-            return _adapter.GetAllAnswers().Where(answer => answer.QuestionId == id).ToList();
+            return _adapter.GetAllAnswers().Where(answer => answer.Id == id).ToList();
         }
 
         public Answer PostAnswer(Answer answer)

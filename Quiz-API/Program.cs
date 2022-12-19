@@ -6,9 +6,7 @@ using Quiz_API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-// Later: <Interface, ImplementingClass>
 builder.Services.AddScoped<IQuizDatabaseContext, QuizDatabaseContext>();
 builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<QuestionAdapter, QuestionAdapter>(); // Maybe skip
@@ -24,30 +22,6 @@ builder.Services.AddScoped<TriviaAdapter, TriviaAdapter>();
 
 
 
-
-
-
-
-
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("Policy1",
-//        policy =>
-//        {
-//            policy.WithOrigins("https://localhost:7181")
-//                                        .AllowAnyHeader()
-//                                        .AllowAnyMethod();
-//        });
-
-//    //options.AddPolicy("AnotherPolicy",
-//    //    policy =>
-//    //    {
-//    //        policy.WithOrigins("http://www.contoso.com")
-//    //                            .AllowAnyHeader()
-//    //                            .AllowAnyMethod();
-//    //    });
-//});
-
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
@@ -60,9 +34,6 @@ builder.Services.AddCors(options =>
                                 .AllowAnyMethod();
         });
 });
-
-
-
 
 
 

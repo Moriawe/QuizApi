@@ -26,19 +26,6 @@ namespace Quiz_API.Controllers
             _quizService = quizService;
         }
 
-        //GET: api/values
-        //[HttpGet]
-        // public IEnumerable<string> Get()
-        // {
-        //     return new string[] { "value1", "value2" };
-        // }
-
-        //// GET api/values/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
         // POST api/values
         [EnableCors]
@@ -46,22 +33,9 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizSolution))]
         public IActionResult PostAnswer(QuizAnswer quizAnswer)
         {
-            //var result = _quizService.EvaluateQuizAnswer(quizAnswer);
-            //Console.WriteLine($"___________ PostAnswer result: {result.Question.Text} wasCorrect: {result.WasAnswerCorrect}");
             return Ok(_quizService.EvaluateQuizAnswer(quizAnswer));
         }
-
-        // PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
+
 }
 

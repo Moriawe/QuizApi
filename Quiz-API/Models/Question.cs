@@ -8,7 +8,6 @@ namespace Quiz_API.Models
         public string Text { get; set; }
         public string Category { get; set; } // music, history, film // Maybe Category (table and class).
 
-        //public virtual IList<Answer> Answers { get; set; }
 
         public Question(string text, string triviaId, string category) // Maybe Category category (table and class).
         {

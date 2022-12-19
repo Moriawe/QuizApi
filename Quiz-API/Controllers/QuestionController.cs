@@ -26,9 +26,6 @@ namespace Quiz_API.Controllers
             _service = service;
         }
 
-        // MOCK Storage:
-        //static List<Question> Questions = new List<Question>();
-
 
         // GET: api/values
         [HttpGet]
@@ -38,6 +35,7 @@ namespace Quiz_API.Controllers
             //Service:
             return Ok(_service.Get());
         }
+
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -54,14 +52,15 @@ namespace Quiz_API.Controllers
             return Ok(question);
         }
 
+
         // POST api/values
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
         public IActionResult Post([FromBody] Question question) // Probably skip [FromBody]
         {
-            //Service:
             return Ok(_service.Post(question));
         }
+
 
         // PUT api/values/5
         [HttpPut]
@@ -69,18 +68,15 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Question>))]
         public IActionResult Put([FromBody] Question question) // Probably skip [FromBody]
         {
-            //Service:
             var questions = _service.Put(question); // This returns too late, I think
-            //Console.WriteLine($"QuestionController PUT question: {question}");
 
             if (questions == null)
             {
-                //Console.WriteLine($"QuestionController PUT question == null");
                 return NotFound("Question not found");
             }
-            //Console.WriteLine($"QuestionController PUT question is NOT null");
             return Ok(questions);
         }
+
 
         // DELETE api/values/5
         [HttpDelete]
@@ -88,7 +84,6 @@ namespace Quiz_API.Controllers
         [SwaggerResponse((int)HttpStatusCode.NoContent)]
         public IActionResult Delete([FromBody] Question question) // Probably skip [FromBody]
         {
-            //Service:
             var success = _service.Delete(question);
             if (!success)
             {
@@ -96,8 +91,7 @@ namespace Quiz_API.Controllers
             }
             return NoContent();
         }
-
-
     }
+
 }
 

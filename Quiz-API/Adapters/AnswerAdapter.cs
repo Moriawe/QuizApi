@@ -4,7 +4,7 @@ using Quiz_API.Models;
 namespace Quiz_API
 {
 	public class AnswerAdapter
-	{
+    {
         private IAnswerRepository _repository;
 
 
@@ -39,5 +39,6 @@ namespace Quiz_API
             return _repository.Delete(answer);
         }
     }
+
 }
 

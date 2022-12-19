@@ -39,7 +39,7 @@ namespace Quiz_API.Adapters
         {
             return _repository.Delete(question);
         }
-
     }
+
 }
 

@@ -31,8 +31,6 @@ namespace Quiz_API.Repositories
         {
             var addedQuestion =
                 _context.Questions.Add(question);
-
-            var updateCount =
             _context.Save();
             return addedQuestion.Entity;
         }
@@ -44,13 +42,13 @@ namespace Quiz_API.Repositories
             if (questionToUpdate != null)
             {
                 // Need to do this:
+                // Or Remove and Add
                 questionToUpdate.Id = question.Id;
                 questionToUpdate.Text = question.Text;
                 questionToUpdate.Category = question.Category; ;
 
                 var updatedQuestion = _context.Questions.Update(questionToUpdate);
 
-                var updateCount =
                 _context.Save();
                 return updatedQuestion.Entity;
             }
@@ -70,8 +68,6 @@ namespace Quiz_API.Repositories
             _context.Save();
             return true;
         }
-
     }
-
 }
 

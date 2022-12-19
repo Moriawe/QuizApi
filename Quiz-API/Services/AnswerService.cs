@@ -19,15 +19,13 @@ public class AnswerService
         return _adapter.GetAllAnswers();
     }
 
-    // Begär en string ID just nu, kan behöva ändras till Guid.
     public List<Answer> GetAnswerByID(Guid id)
     {
-        List<Answer> listOfAnswers;
-        listOfAnswers = _adapter.GetAllAnswers().Where(answer => answer.QuestionId == id).ToList();
-        return listOfAnswers;
+        //List<Answer> listOfAnswers;
+        return _adapter.GetAllAnswers().Where(answer => answer.QuestionId == id).ToList();
+        //return listOfAnswers;
     }
 
-    // Skall denna returnera ALLA answers till den frågan eller bara den man postade?
     public Answer PostAnswer(Answer answer)
     {
         _adapter.SaveNewAnswer(answer);

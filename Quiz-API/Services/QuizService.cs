@@ -59,6 +59,8 @@ public class QuizService : IQuizService
             {
                 AddQuizToDatabase(triviaQuiz);
             }
+            var randomizedAnswers = triviaQuiz.Answers.
+            triviaQuiz.Answers = 
             return triviaQuiz;
         }
         Console.WriteLine($"__________ From Database");

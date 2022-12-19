@@ -23,7 +23,7 @@ namespace Quiz_API
         {
             return _context.Answers.Where(x => x.Id == Id).FirstOrDefault();
         }
-        
+
         public List<Answer> GetAnswerByQuestionId(Guid questionId)
         {
             return _context.Answers.Where(answer => answer.QuestionId == questionId).ToList();
@@ -31,10 +31,7 @@ namespace Quiz_API
 
         public Answer Post(Answer answer)
         {
-            var addedAnswer =
-                _context.Answers.Add(answer);
-
-            var updateCount =
+            _context.Answers.Add(answer);
             _context.Save();
             return answer;
         }
@@ -52,7 +49,6 @@ namespace Quiz_API
 
                 var updatedAnswer = _context.Answers.Update(answerToUpdate);
 
-                var updateCount =
                 _context.Save();
                 return updatedAnswer.Entity;
             }

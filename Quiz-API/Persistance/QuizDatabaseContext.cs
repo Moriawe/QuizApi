@@ -20,14 +20,12 @@ namespace Quiz_API.Persistance
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Filename=quiz.sqlite");
-            Console.WriteLine("QuizDatabaseContext OnConfiguring");
         }
 
 
 
         public int Save()
         {
-            Console.WriteLine("QuizContext Save");
             return this.SaveChanges();
         }
 

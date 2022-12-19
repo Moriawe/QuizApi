@@ -40,7 +40,10 @@ namespace Quiz_API.Services
                 return triviaQuiz;
             }
             var dbQuiz = _quizAdapter.GetRandomQuizFromDb();
-            dbQuiz.Answers = RandomizeAnswers(dbQuiz.Answers);
+            if (dbQuiz != null)
+            {
+                dbQuiz.Answers = RandomizeAnswers(dbQuiz.Answers);
+            }
 
             return dbQuiz;
         }

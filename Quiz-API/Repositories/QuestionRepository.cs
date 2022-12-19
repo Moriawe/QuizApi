@@ -31,7 +31,7 @@ namespace Quiz_API.Repositories
         {
             var addedQuestion =
                 _context.Questions.Add(question);
-                _context.Save();
+            _context.Save();
             return addedQuestion.Entity;
         }
 
@@ -68,8 +68,6 @@ namespace Quiz_API.Repositories
             _context.Save();
             return true;
         }
-
     }
-
 }
 

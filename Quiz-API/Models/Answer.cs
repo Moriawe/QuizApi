@@ -2,7 +2,6 @@
 
 namespace Quiz_API.Models
 {
-
     public class Answer
     {
         public Guid Id { get; set; }

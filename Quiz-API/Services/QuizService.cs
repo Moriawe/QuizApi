@@ -59,19 +59,32 @@ public class QuizService : IQuizService
             {
                 AddQuizToDatabase(triviaQuiz);
             }
-            Random rnd = new Random();
-            List<Answer> randomizedAnswers = triviaQuiz.Answers.OrderBy(x => rnd.Next()).ToList();
-            //var randomizedAnswers = triviaQuiz.Answers.
-            triviaQuiz.Answers = randomizedAnswers;
+            triviaQuiz.Answers = RandomizeAnswers(triviaQuiz.Answers);
             return triviaQuiz;
         }
         Console.WriteLine($"__________ From Database");
 
-        return _quizAdapter.GetRandomQuizFromDb();
+        var dbQuiz = _quizAdapter.GetRandomQuizFromDb();
+
+        dbQuiz.Answers = RandomizeAnswers(dbQuiz.Answers);
+
+
+        Console.WriteLine($"__________ From Database");
+
+
+        return dbQuiz;
 
         //return (await _triviaAdapter.GetOneTriviaQuiz());
 
         //return  dbQuiz;
+    }
+
+    private List<Answer> RandomizeAnswers(List<Answer> answers)
+    {
+        Random rnd = new Random();
+        List<Answer> randomizedAnswers = answers.OrderBy(x => rnd.Next()).ToList();
+        answers = randomizedAnswers;
+        return answers;
     }
 
     //// Hämta en quiz som innehåller 1 fråga och 4 svarsalternativ från TriviaAdapter

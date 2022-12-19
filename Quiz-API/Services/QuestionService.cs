@@ -5,12 +5,8 @@ using Quiz_API.Adapters;
 
 namespace Quiz_API.Services
 {
-
-    // Maybe QuisService instead
-    // Build ViewModel that QuizController can use
     public class QuestionService
     {
-        //private QuizDatabaseContext Context;
         private QuestionAdapter _adapter;
 
 
@@ -45,8 +41,5 @@ namespace Quiz_API.Services
         {
             return _adapter.DeleteQuestion(question);
         }
-
-
-
     }
 }

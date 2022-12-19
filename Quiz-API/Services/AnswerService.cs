@@ -4,7 +4,6 @@ using Quiz_API.Persistance;
 
 namespace Quiz_API.Services
 {
-
     public class AnswerService
     {
         private AnswerAdapter _adapter;
@@ -22,9 +21,7 @@ namespace Quiz_API.Services
 
         public List<Answer> GetAnswerByID(Guid id)
         {
-            //List<Answer> listOfAnswers;
             return _adapter.GetAllAnswers().Where(answer => answer.QuestionId == id).ToList();
-            //return listOfAnswers;
         }
 
         public Answer PostAnswer(Answer answer)

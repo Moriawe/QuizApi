@@ -33,34 +33,6 @@ namespace Quiz_API.Controllers
         }
 
 
-        // GET: api/values
-        [HttpGet("Database")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
-        public IActionResult GetDatabase()
-        {
-            return Ok(_quizService.GetDbQuiz());
-        }
-
-
-        // GET: api/values
-        [HttpGet("TriviaRepo")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(TriviaModel))]
-        public async Task<IActionResult> GetTriviaModel()
-        {
-            return Ok(await _triviaRepository.GetTriviaAsync());
-            //return Ok(await _quizService.GetTriviaQuiz());
-        }
-
-
-        // GET: api/values
-        [HttpGet("Trivia")]
-        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(QuizModel))]
-        public async Task<IActionResult> GetTrivia()
-        {
-            return Ok(await _quizService.GetTriviaQuiz());
-        }
-
-
         // POST api/values
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<QuizModel>))]

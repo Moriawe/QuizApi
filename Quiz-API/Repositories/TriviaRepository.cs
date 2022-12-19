@@ -3,7 +3,6 @@ using Quiz_API.Models;
 
 namespace Quiz_API.Repositories
 {
-
     // Skall hämta information ifrån Trivia API:et
     public class TriviaRepository
     {

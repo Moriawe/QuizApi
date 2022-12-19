@@ -8,8 +8,6 @@ namespace Quiz_API
 	{
         public Task<QuizModel?> GetQuiz();
         public QuizSolution EvaluateQuizAnswer(QuizAnswer quizAnswer);
-
-
         public QuizModel? GetDbQuiz();
         public Task<QuizModel> GetTriviaQuiz();
         public bool isAnswerCorrect(Answer answer);

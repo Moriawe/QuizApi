@@ -43,6 +43,7 @@ namespace Quiz_API
             if (answerToUpdate != null)
             {
                 // Need to do this:
+                // Or Remove and Add
                 answerToUpdate.Id = answer.Id;
                 answerToUpdate.AnswerText = answer.AnswerText;
                 answerToUpdate.IsCorrectAnswer = answer.IsCorrectAnswer; ;
@@ -68,11 +69,6 @@ namespace Quiz_API
             _context.Save();
             return true;
         }
-
-
-
-
     }
-
 }
 

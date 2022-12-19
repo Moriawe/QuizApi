@@ -6,7 +6,6 @@ using Quiz_API.Models;
 
 namespace Quiz_API.Persistance
 {
-
     public class QuizDatabaseContext : DbContext, IQuizDatabaseContext
     {
         public DbSet<Question> Questions { get; set; }
@@ -17,21 +16,17 @@ namespace Quiz_API.Persistance
             this.Database.EnsureCreated(); // Create the (sqlite) database if it does not exist.
         }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Filename=quiz.sqlite");
         }
 
 
-
         public int Save()
         {
             return this.SaveChanges();
         }
-
-
-
-
     }
 }
 

@@ -4,7 +4,6 @@ using Quiz_API.Persistance;
 
 namespace Quiz_API.Services;
 
-// Skall bli en stor mastodont fil som hanterar all logic i hela applikationen
 public class QuizService : IQuizService
 {
     private IQuizAdapter _quizAdapter;

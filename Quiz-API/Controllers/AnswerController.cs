@@ -19,8 +19,7 @@ public class AnswerController : ControllerBase
         _service = service;
     }
 
-    //TODO Behöver vi hämta alla svar? Känns mer logiskt att hämta ALLA frågor
-    // GET: api/values
+
     [HttpGet]
     [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<Answer>))]
     public IActionResult Get()
@@ -38,19 +37,6 @@ public class AnswerController : ControllerBase
         return Ok(_service.GetAnswerByID(id));
     }
 
-    // ANVÄNDA ASYNC OCH AWAIT?
-    /*
-    public async Task<ActionResult<Answer>> GetAnswer(string id)
-    {
-        var answers = await _answerService.GetAnswers(id);
-        if (answers == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(answers);
-    }
-    */
 
     // POST api/values
     [HttpPost]
@@ -59,6 +45,7 @@ public class AnswerController : ControllerBase
     {
         return Ok(_service.PostAnswer(answer));
     }
+
 
     // PUT api/values/5
     [HttpPut("{id}")]
@@ -77,8 +64,8 @@ public class AnswerController : ControllerBase
             return Ok();
         }
         return NotFound();
-
     }
+
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
@@ -91,7 +78,7 @@ public class AnswerController : ControllerBase
         {
             return Ok();
         }
-
         return NotFound();
     }
+
 }

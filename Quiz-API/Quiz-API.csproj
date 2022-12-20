@@ -36,6 +36,7 @@
     <None Remove="Interfaces\Services\" />
     <None Remove="Microsoft.AspNetCore.Mvc.Versioning" />
     <None Remove="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" />
+    <None Remove="Controllers\V2\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -48,5 +49,6 @@
     <Folder Include="Interfaces\Repositories\" />
     <Folder Include="Interfaces\Adapters\" />
     <Folder Include="Interfaces\Services\" />
+    <Folder Include="Controllers\V2\" />
   </ItemGroup>
 </Project>

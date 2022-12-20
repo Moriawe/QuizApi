@@ -1,4 +1,5 @@
-﻿using Quiz_API;
+﻿using Microsoft.AspNetCore.Mvc;
+using Quiz_API;
 using Quiz_API.Adapters;
 using Quiz_API.Persistance;
 using Quiz_API.Repositories;
@@ -33,6 +34,13 @@ builder.Services.AddCors(options =>
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
         });
+});
+
+builder.Services.AddApiVersioning(setup =>
+{
+    setup.DefaultApiVersion = new ApiVersion(1, 0);
+    setup.AssumeDefaultVersionWhenUnspecified = true;
+    setup.ReportApiVersions = true;
 });
 
 

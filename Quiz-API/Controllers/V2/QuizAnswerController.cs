@@ -16,7 +16,6 @@ namespace Quiz_API.Controllers.V2
 {
     [ApiController]
     [Route("api/v2/[controller]")]
-    [ApiExplorerSettings(GroupName = "v2")]
     [Produces(MediaTypeNames.Application.Json)]
     public class QuizAnswerController : ControllerBase
     {
